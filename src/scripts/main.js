@@ -1,23 +1,31 @@
-import { getPosts } from "./feed/PostProvider.js"
+/**
+ * Main logic module for what should happen on initial page load for Giffygram
+ */
 import useSimpleAuth from "./hooks/useSimpleAuth.js"
 import LoginForm from "./auth/Login.js"
-import PostList from "./feed/PostList.js"
-import NavBar from "./nav/NavBar.js"
+import { Giffygram } from "./ApplicationViews.js"
 
+
+/**
+ * If user is authenticated, load the main UI, else show login form
+ */
 if (useSimpleAuth().isAuthenticated()) {
-    getPosts()
-        .then(NavBar)
-        .then(PostList)
+    Giffygram()
 } else {
     LoginForm()
 }
 
+
+/**
+ * Event listener section
+ */
 const eventHub = document.querySelector(".giffygram")
 
-eventHub.addEventListener("login", e => {
-    getPosts().then(() => PostList())
-})
+// What should happen immediately after a user authenticates?
+eventHub.addEventListener("login", Giffygram)
 
-eventHub.addEventListener("unauthorizedRequest", e => {
-    LoginForm()
-})
+/**
+ * What should happen when an expired, or missing token, causes
+ * an unauthorized request to the API?
+ */
+eventHub.addEventListener("unauthorizedRequest", LoginForm)

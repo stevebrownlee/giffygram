@@ -12,10 +12,9 @@ eventHub.addEventListener("click", clickEvent => {
             email: document.querySelector("input[name='email']").value,
             password: document.querySelector("input[name='password']").value
         })
-
-        eventHub.dispatchEvent(
-            new CustomEvent("login")
-        )
+        .then(() => {
+            eventHub.dispatchEvent( new CustomEvent("login") )
+        })
     }
 })
 
@@ -27,11 +26,11 @@ const LoginForm = () => {
             <form>
                 <fieldset>
                     <label for="email">Email:</label>
-                    <input type="text" name="email" autofocus placeholder="Email address" />
+                    <input value="steve@stevebrownlee.com" type="text" name="email" autofocus placeholder="Email address" />
                 </fieldset>
                 <fieldset>
                     <label for="password">Password:</label>
-                    <input type="password" name="password" placeholder="Password" />
+                    <input type="password" value="Admin8*" name="password" placeholder="Password" />
                 </fieldset>
             </form>
             <button id="loginButton">Login</button>
