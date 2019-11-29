@@ -32,7 +32,7 @@ const useSimpleAuth = () => {
             .then(_ => _.json())
             .then(res => {
                 if ("accessToken" in res) {
-                    localStorage.setItem( "gg_token", res.accessToken )
+                    localStorage.setItem("gg_token", res.accessToken)
                     loggedIn = true
                 }
             })
