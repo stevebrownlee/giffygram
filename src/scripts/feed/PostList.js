@@ -11,7 +11,7 @@ const PostList = () => {
             ${
             posts.map(p => `
                     <div class="post">
-                        <p>Posted by <a href="#" class="profileLink" id="profile--${p.user.username}">${p.user.username}</a> on ${new Date(p.timestamp).toLocaleDateString('en-US')}</p>
+                        <div class="post__tagline">Posted by <a href="#" class="profileLink" id="profile--${p.user.username}">${p.user.username}</a> on ${new Date(p.timestamp).toLocaleDateString('en-US')}</div>
                         <img class="post__image" src="${p.url}" />
                         <div class="post__actions">
                             <div>
