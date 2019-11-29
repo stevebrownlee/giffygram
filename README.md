@@ -2,6 +2,8 @@
 
 Track your friends' favorite gifs.
 
+![giffygram feed image](./giffygram.png)
+
 ## Setup
 
 1. Install API server with `npm i -g json-server-auth`
