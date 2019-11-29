@@ -3,3 +3,14 @@
 @import 'post.css';
 @import 'updates.css';
 
+body {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding: 0;
+    margin: 0;
+}
+
+.actionIcon {
+    height: 1.2em;
+    margin: 0.5em 0.5em;
+    cursor: pointer;
+}

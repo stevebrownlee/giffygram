@@ -1,0 +1,14 @@
+.post {
+    margin: 0 25%;
+    flex-basis: 50%;
+}
+
+.post__image {
+    width: 100%;
+}
+
+.post__actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}

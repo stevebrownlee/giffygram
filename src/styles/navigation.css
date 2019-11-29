@@ -1,0 +1,22 @@
+.navigation {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: start;
+    border-bottom: 1px solid lightblue;
+    padding: 0.5em 0 0.5em 1em;
+    margin-bottom: 2em;
+}
+
+.navigation__item {
+    vertical-align: baseline;
+}
+
+.navigation__name {
+    font-size: 2em;
+    padding-left: 0.5em;
+    padding-top: 0.1em;
+}
+
+.navigation__icon > img {
+    height: 40px;
+}
