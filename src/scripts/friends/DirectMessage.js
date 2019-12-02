@@ -6,7 +6,7 @@ const contentTarget = document.querySelector(".giffygram")
 const DirectMessage = () => {
     const friends = useFriends()
 
-    const render = () => {
+    const render = (friendCollection) => {
         contentTarget.innerHTML += `
             <dialog id="directMessageDialog">
                 <select>
@@ -23,6 +23,7 @@ const DirectMessage = () => {
         document.querySelector("#directMessageDialog").showModal()
     }
 
+    getFriends().then(DirectMessage)
     render()
 }
 

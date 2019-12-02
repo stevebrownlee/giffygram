@@ -11,7 +11,5 @@ export const getFriends = () => {
         }
     })
         .then(_ => _.json())
-        .then(users => {
-            friends = users.splice(0)
-        })
+        .then(users => friends = users.splice(0))
 }

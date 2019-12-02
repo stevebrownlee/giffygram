@@ -1,3 +1,6 @@
+let token = null
+let userId = null
+
 const useSimpleAuth = () => {
     let loggedIn = false
     const isAuthenticated = () => loggedIn || localStorage.getItem("gg_token") !== null

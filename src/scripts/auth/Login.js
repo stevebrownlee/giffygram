@@ -21,6 +21,8 @@ eventHub.addEventListener("click", clickEvent => {
 const LoginForm = () => {
 
     const render = () => {
+        console.log("Rendering login form")
+
         updates.innerHTML = ""
         contentTarget.innerHTML = `
             <form>
@@ -38,8 +40,6 @@ const LoginForm = () => {
     }
 
     render()
-
-    eventHub.addEventListener("unauthorizedRequest", render)
 }
 
 export default LoginForm

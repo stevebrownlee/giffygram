@@ -8,6 +8,7 @@ export const usePosts = () => {
 
 const setPosts = postArray => {
     posts = postArray.splice(0)
+    eventHub.dispatchEvent(new CustomEvent("stateChange.posts"))
 }
 
 export const getPosts = () => {
@@ -21,9 +22,14 @@ export const getPosts = () => {
         .then(_ => {
             if (_.status === 401) {
                 eventHub.dispatchEvent( new CustomEvent("unauthorizedRequest") )
+                throw "Unauthorized request exception"
             } else {
                 return _.json()
             }
         })
-        .then(setPosts)
+        .then(posts => {
+            if (Array.isArray(posts)) {
+                setPosts(posts)
+            }
+        })
 }
