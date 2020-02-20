@@ -1,30 +1,40 @@
-import { useFriends } from "./FriendProvider.js"
+import { useFriends, sendDirectMessage } from "./FriendProvider.js"
 
 const eventHub = document.querySelector(".giffygram")
 const contentTarget = document.querySelector(".giffygram")
 
-const DirectMessage = () => {
-    const friends = useFriends()
+contentTarget.addEventListener("click", e => {
+    if (e.target.id === "sendDirectMessage") {
+        const recipient = contentTarget.querySelector("#recipient").value
+        const text = contentTarget.querySelector("#directMessage").value
+        sendDirectMessage(recipient, text)
+    }
+})
 
-    const render = (friendCollection) => {
-        contentTarget.innerHTML += `
-            <dialog id="directMessageDialog">
-                <select>
+const render = (friendCollection) => {
+    contentTarget.innerHTML += `
+        <dialog id="directMessageDialog">
+            <article class="message">
+                <select id="recipient" class="select--friends">
                     <option value="0">Select a friend...</option>
                     ${
-                        friends.map(f => `
+                        friendCollection.map(f => `
                             <option value="${f.id}">${f.name}</option>
                         `)
                     }
                 </select>
-            </dialog>
-        `
+                <textarea id="directMessage" class="directMessage message__section" placeholder="Direct message..."></textarea>
+                <button id="sendDirectMessage" class="message__section">Send</button>
+            </article>
+        </dialog>
+    `
 
-        document.querySelector("#directMessageDialog").showModal()
-    }
+    document.querySelector("#directMessageDialog").showModal()
+}
 
-    getFriends().then(DirectMessage)
-    render()
+const DirectMessage = () => {
+    const friends = useFriends()
+    render(friends)
 }
 
 export default DirectMessage

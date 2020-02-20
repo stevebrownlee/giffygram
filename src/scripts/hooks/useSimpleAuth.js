@@ -1,9 +1,20 @@
+let user = null
 let token = null
-let userId = null
+
+const authenticate = res => {
+    localStorage.setItem("gg_token", JSON.stringify(res))
+    user = res.user
+    token = res.accessToken
+}
 
 const useSimpleAuth = () => {
-    let loggedIn = false
-    const isAuthenticated = () => loggedIn || localStorage.getItem("gg_token") !== null
+    if (localStorage.getItem("gg_token") !== null && token === null) {
+        const credentials = JSON.parse(localStorage.getItem("gg_token"))
+        user = credentials.user.id
+        token = credentials.accessToken
+    }
+
+    const isAuthenticated = () => localStorage.getItem("gg_token") !== null
 
     const register = userInfo => {
         return fetch("http://localhost:8088/register", {
@@ -17,8 +28,7 @@ const useSimpleAuth = () => {
             .then(_ => _.json())
             .then(res => {
                 if ("accessToken" in res) {
-                    localStorage.setItem( "gg_token", res.accessToken )
-                    loggedIn = true
+                    authenticate(res)
                 }
             })
     }
@@ -35,18 +45,16 @@ const useSimpleAuth = () => {
             .then(_ => _.json())
             .then(res => {
                 if ("accessToken" in res) {
-                    localStorage.setItem("gg_token", res.accessToken)
-                    loggedIn = true
+                    authenticate(res)
                 }
             })
     }
 
     const logout = () => {
-        loggedIn = false
         localStorage.removeItem("gg_token")
     }
 
-    return { isAuthenticated, logout, login, register }
+    return { user, isAuthenticated, logout, login, register, token }
 }
 
 export default useSimpleAuth

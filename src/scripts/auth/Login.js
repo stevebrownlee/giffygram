@@ -21,7 +21,7 @@ eventHub.addEventListener("click", clickEvent => {
 const LoginForm = () => {
 
     const render = () => {
-        console.log("Rendering login form")
+        console.log("****  Rendering login form  ****")
 
         updates.innerHTML = ""
         contentTarget.innerHTML = `

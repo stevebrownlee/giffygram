@@ -1,0 +1,21 @@
+.directMessage {
+    height: 4rem;
+}
+
+.message {
+    margin: 2rem;
+    display: grid;
+    justify-content: space-evenly;
+}
+
+.select--friends {
+    width: initial;
+    margin: 0.5rem;
+    font-size: large;
+}
+
+.message__section {
+    font-size: large;
+    margin: 0.75rem;
+    width: max-content;
+}

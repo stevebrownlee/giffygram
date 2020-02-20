@@ -1,64 +1,71 @@
 {
-    "posts": [
-        {
-            "id": 1,
-            "userId": 1,
-            "url": "https://media.giphy.com/media/3o7aCWDyW0PJCsxHna/giphy.gif",
-            "image": null,
-            "timestamp": 1574962753623
-        },
-        {
-            "id": 2,
-            "userId": 1,
-            "url": "https://media.giphy.com/media/eHWWKfSp0VZ1V87Ixj/giphy.gif",
-            "image": null,
-            "timestamp": 1574962757623
-        },
-        {
-            "url": "https://media.giphy.com/media/eHWWKfSp0VZ1V87Ixj/giphy.gif",
-            "image": null,
-            "timestamp": 1575211182251,
-            "userId": 1,
-            "id": 3
-        },
-        {
-            "url": "https://media.giphy.com/media/eHWWKfSp0VZ1V87Ixj/giphy.gif",
-            "image": null,
-            "timestamp": 1575211184251,
-            "userId": 3,
-            "id": 4
-        }
-    ],
-    "messages": [],
-    "userFavoritePeople": [],
-    "userFavoritePosts": [],
-    "users": [
-        {
-            "email": "admin@admin.com",
-            "password": "$2a$10$dptvdXYZtJhzqFzCWAJw/eJ4MfoIVuM0kLIR3DtIkOTW1zVw6lLTO",
-            "name": "Admina Straytor",
-            "username": "admin",
-            "location": "Nashville, TN",
-            "avatar": "",
-            "id": 1
-        },
-        {
-            "email": "steve@stevebrownlee.com",
-            "password": "$2a$10$hVUr6w5kXP30p5nKRkUQjOa7uXFBO0CwHEzX8k5C7cxcOZ7Pxu.zO",
-            "name": "Steve Brownlee",
-            "username": "stevebrownlee",
-            "location": "Nashville, TN",
-            "avatar": "",
-            "id": 2
-        },
-        {
-            "email": "po@po.com",
-            "password": "$2a$10$rlYdFfol2YsVGln2HX/s4urlvm96ffJvf9mapUOaATzTfemn1Awuu",
-            "name": "Po Bear",
-            "username": "po",
-            "location": "Nashville, TN",
-            "avatar": "",
-            "id": 3
-        }
-    ]
+  "posts": [
+    {
+      "id": 1,
+      "userId": 1,
+      "url": "https://media.giphy.com/media/3o7aCWDyW0PJCsxHna/giphy.gif",
+      "image": null,
+      "timestamp": 1574962753623
+    },
+    {
+      "id": 2,
+      "userId": 1,
+      "url": "https://media.giphy.com/media/eHWWKfSp0VZ1V87Ixj/giphy.gif",
+      "image": null,
+      "timestamp": 1574962757623
+    },
+    {
+      "url": "https://media.giphy.com/media/eHWWKfSp0VZ1V87Ixj/giphy.gif",
+      "image": null,
+      "timestamp": 1575211182251,
+      "userId": 1,
+      "id": 3
+    },
+    {
+      "url": "https://media.giphy.com/media/eHWWKfSp0VZ1V87Ixj/giphy.gif",
+      "image": null,
+      "timestamp": 1575211184251,
+      "userId": 3,
+      "id": 4
+    }
+  ],
+  "messages": [
+    {
+      "userId": 2,
+      "recipient": 3,
+      "text": "mvkw kv kwvkowmkow m",
+      "id": 1
+    }
+  ],
+  "userFavoritePeople": [],
+  "userFavoritePosts": [],
+  "users": [
+    {
+      "email": "admin@admin.com",
+      "password": "$2a$10$dptvdXYZtJhzqFzCWAJw/eJ4MfoIVuM0kLIR3DtIkOTW1zVw6lLTO",
+      "name": "Admina Straytor",
+      "username": "admin",
+      "location": "Nashville, TN",
+      "avatar": "",
+      "id": 1
+    },
+    {
+      "email": "steve@stevebrownlee.com",
+      "password": "$2a$10$hVUr6w5kXP30p5nKRkUQjOa7uXFBO0CwHEzX8k5C7cxcOZ7Pxu.zO",
+      "name": "Steve Brownlee",
+      "username": "stevebrownlee",
+      "location": "Nashville, TN",
+      "avatar": "",
+      "id": 2
+    },
+    {
+      "email": "po@po.com",
+      "password": "$2a$10$rlYdFfol2YsVGln2HX/s4urlvm96ffJvf9mapUOaATzTfemn1Awuu",
+      "name": "Po Bear",
+      "username": "po",
+      "location": "Nashville, TN",
+      "avatar": "",
+      "id": 3
+    }
+  ]
 }

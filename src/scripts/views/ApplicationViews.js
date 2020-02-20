@@ -12,7 +12,9 @@ const eventHub = document.querySelector(".giffygram")
 eventHub.addEventListener("login", GiffyGram)
 
 // What should happen when user clicks on direct message icon?
-eventHub.addEventListener("directMessage", DirectMessage)
+eventHub.addEventListener("directMessage", () => {
+    getFriends().then(DirectMessage)
+})
 
 /**
  * What should happen when an expired, or missing token, causes

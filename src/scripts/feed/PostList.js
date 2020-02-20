@@ -5,9 +5,6 @@ const eventHub = document.querySelector(".giffygram")
 const contentTarget = document.querySelector(".feed")
 
 const PostList = () => {
-    const posts = usePosts()
-
-    eventHub.addEventListener("stateChange.posts", e => render(posts))
 
     const render = (posts) => {
         console.log("****  Rendering posts  ****")
@@ -18,7 +15,15 @@ const PostList = () => {
         `
     }
 
+    const posts = usePosts()
     render(posts)
+
+    eventHub.addEventListener("stateChange.posts", e => {
+        if (contentTarget.innerHTML !== "") {
+            const updatedPosts = usePosts()
+            render(updatedPosts)
+        }
+    })
 
 }
 

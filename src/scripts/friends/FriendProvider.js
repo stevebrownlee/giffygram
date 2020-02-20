@@ -1,15 +1,47 @@
+import useSimpleAuth from "../hooks/useSimpleAuth.js"
+
+const eventHub = document.querySelector(".giffygram")
+
 let friends = []
 
 export const useFriends = () => friends.slice()
 
+const setFriends = friendsArray => {
+    friends = friendsArray.splice(0)
+    eventHub.dispatchEvent(new CustomEvent("friendStateChanged"))
+}
+
+export const sendDirectMessage = (recipient, text) => {
+    const auth = useSimpleAuth()
+
+    return fetch("http://localhost:8088/messages", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${auth.token}`
+        },
+        body: JSON.stringify({
+            userId: auth.user,
+            recipient: parseInt(recipient),
+            text
+        })
+    })
+        .then(response => response.json())
+        .then(() => {
+
+        })
+}
+
 export const getFriends = () => {
+    const auth = useSimpleAuth()
+
     return fetch("http://localhost:8088/users", {
         method: "GET",
         headers: {
             "Accept": "application/json",
-            "Authorization": `Bearer ${localStorage.getItem("gg_token")}`
+            "Authorization": `Bearer ${auth.token}`
         }
     })
         .then(_ => _.json())
-        .then(users => friends = users.splice(0))
+        .then(setFriends)
 }

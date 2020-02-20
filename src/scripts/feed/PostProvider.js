@@ -1,3 +1,5 @@
+import useSimpleAuth from "../hooks/useSimpleAuth.js"
+
 let posts = []
 const eventHub = document.querySelector(".giffygram")
 
@@ -12,11 +14,13 @@ const setPosts = postArray => {
 }
 
 export const getPosts = () => {
+    const auth = useSimpleAuth()
+
     return fetch("http://localhost:8088/posts?_expand=user", {
         method: "GET",
         headers: {
             "Accept": "application/json",
-            "Authorization": `Bearer ${localStorage.getItem("gg_token")}`
+            "Authorization": `Bearer ${auth.token}`
         }
     })
         .then(_ => {
@@ -32,4 +36,5 @@ export const getPosts = () => {
                 setPosts(posts)
             }
         })
+        // .catch(err => console.log)
 }

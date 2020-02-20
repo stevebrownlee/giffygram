@@ -4,7 +4,7 @@ const eventHub = document.querySelector(".giffygram")
 const contentTarget = document.querySelector(".navigation")
 
 contentTarget.addEventListener("click", e => {
-    if (e.target.id === "directMessage") {
+    if (e.target.id === "directMessageIcon") {
         eventHub.dispatchEvent(
             new CustomEvent("directMessage")
         )
@@ -28,7 +28,7 @@ const NavBar = () => {
                 <button id="getLatestPosts">Get Posts</button>
             </div>
             <div class="navigation__item navigation__message">
-                <img id="directMessage" src="/images/fountain-pen.svg" alt="Direct message" />
+                <img id="directMessageIcon" src="/images/fountain-pen.svg" alt="Direct message" />
             </div>
         `
     }
