@@ -10,7 +10,23 @@ export const usePosts = () => {
 
 const setPosts = postArray => {
     posts = postArray.splice(0)
-    eventHub.dispatchEvent(new CustomEvent("stateChange.posts"))
+    eventHub.dispatchEvent(new CustomEvent("postsStateChange"))
+}
+
+export const createPost = post => {
+    const auth = useSimpleAuth()
+
+    return fetch("http://localhost:8088/posts", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${auth.token}`
+        },
+        body: JSON.stringify(post)
+
+    })
+        .then(response => response.json())
+        .then(getPosts)
 }
 
 export const getPosts = () => {

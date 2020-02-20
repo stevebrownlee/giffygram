@@ -5,6 +5,8 @@ const GiffyGram = () => {
     // Show friend bar
 
 
+    // Show new message box
+
     // Show main main feed
     getPosts().then(PostList)
 
