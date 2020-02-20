@@ -1,18 +1,19 @@
 import { useFriends, sendDirectMessage } from "./FriendProvider.js"
 
 const eventHub = document.querySelector(".giffygram")
-const contentTarget = document.querySelector(".giffygram")
+const contentTarget = document.querySelector(".directMessage")
 
 contentTarget.addEventListener("click", e => {
     if (e.target.id === "sendDirectMessage") {
         const recipient = contentTarget.querySelector("#recipient").value
         const text = contentTarget.querySelector("#directMessage").value
         sendDirectMessage(recipient, text)
+        contentTarget.innerHTML = ""
     }
 })
 
 const render = (friendCollection) => {
-    contentTarget.innerHTML += `
+    contentTarget.innerHTML = `
         <dialog id="directMessageDialog">
             <article class="message">
                 <select id="recipient" class="select--friends">
