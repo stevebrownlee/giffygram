@@ -12,6 +12,9 @@ contentTarget.addEventListener("click", e => {
 const Post = post => {
     return `
     <section class="post">
+        <header>
+            <h2 class="post__remark">${post.remark}</h2>
+        </header>
         <div class="post__tagline">
             Posted by
             <a href="#" class="profileLink" id="profile--${post.user.username}">

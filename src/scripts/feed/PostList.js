@@ -14,15 +14,12 @@ eventHub.addEventListener("postsStateChange", e => {
 const uploadFile = file => {
     const auth = useSimpleAuth()
 
-    let url = "http://localhost:8088/posts"
-    let formData = new FormData()
-    formData.append('file', file)
-
     let reader = new FileReader()
     reader.onloadend = function() {
         createPost({
             userId: auth.user,
             image: reader.result,
+            remark: document.querySelector(".newPost__comment").value,
             url: "",
             timestamp: Date.now()
         })
