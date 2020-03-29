@@ -1,4 +1,4 @@
-import { usePosts, createPost } from "./PostProvider.js"
+import { usePosts, createPost, getPosts } from "./PostProvider.js"
 import Post from "./Post.js"
 import PostEntry from "./PostEntry.js"
 import useSimpleAuth from "../hooks/useSimpleAuth.js"
@@ -7,10 +7,8 @@ const eventHub = document.querySelector(".giffygram")
 const contentTarget = document.querySelector(".feed")
 
 eventHub.addEventListener("postsStateChange", e => {
-    if (contentTarget.innerHTML !== "") {
-        const updatedPosts = usePosts()
-        render(updatedPosts)
-    }
+    const updatedPosts = usePosts()
+    render(updatedPosts)
 })
 
 const uploadFile = file => {
@@ -20,12 +18,16 @@ const uploadFile = file => {
     let formData = new FormData()
     formData.append('file', file)
 
-    createPost({
-        userId: auth.user.id,
-        image: formData,
-        url: "",
-        timestamp: Date.now()
-    })
+    let reader = new FileReader()
+    reader.onloadend = function() {
+        createPost({
+            userId: auth.user,
+            image: reader.result,
+            url: "",
+            timestamp: Date.now()
+        })
+    }
+    reader.readAsDataURL(file)
 }
 
 const intializeDrop = () => {
@@ -43,31 +45,25 @@ const intializeDrop = () => {
     ;['dragenter', 'dragover'].forEach(e => dropZone.addEventListener(e, highlight, false))
     ;['dragleave', 'drop'].forEach(e => dropZone.addEventListener(e, unhighlight, false))
 
-    const handleFiles = files => ([...files]).forEach(uploadFile)
-
-    const handleDrop = e => {
-        let dt = e.dataTransfer
-        let files = dt.files
-        handleFiles(files)
-    }
-
-    dropZone.addEventListener('drop', handleDrop, false)
+    dropZone.addEventListener('drop', e => uploadFile(e.dataTransfer.files[0]), false)
 }
 
 const render = (posts) => {
     console.log("****  Rendering posts  ****")
 
     contentTarget.innerHTML = `
-        ${ PostEntry()}
-        ${ posts.map(p => Post(p)).join("")}
+        ${ PostEntry() }
+        ${ posts.map(Post).join("") }
     `
 
     intializeDrop()
 }
 
 const PostList = () => {
-    const posts = usePosts()
-    render(posts)
+    getPosts().then(() => {
+        const posts = usePosts()
+        render(posts)
+    })
 }
 
 export default PostList

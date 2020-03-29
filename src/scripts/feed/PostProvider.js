@@ -4,12 +4,12 @@ let posts = []
 const eventHub = document.querySelector(".giffygram")
 
 export const usePosts = () => {
-    const sorted = posts.sort((a, b) => a.timestamp - b.timestamp)
+    const sorted = posts.sort((a, b) => b.timestamp - a.timestamp)
     return sorted
 }
 
 const setPosts = postArray => {
-    posts = postArray.splice(0)
+    posts = postArray
     eventHub.dispatchEvent(new CustomEvent("postsStateChange"))
 }
 
@@ -25,7 +25,20 @@ export const createPost = post => {
         body: JSON.stringify(post)
 
     })
-        .then(response => response.json())
+        .then(_ => _.json())
+        .then(getPosts)
+}
+
+export const deletePost = id => {
+    const auth = useSimpleAuth()
+
+    return fetch(`http://localhost:8088/posts/${id}`, {
+        method: "DELETE",
+        headers: {
+            "Authorization": `Bearer ${auth.token}`
+        }
+    })
+        .then(_ => _.json())
         .then(getPosts)
 }
 
