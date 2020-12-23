@@ -1,23 +1,20 @@
-import { getPosts } from "../feed/PostProvider.js"
+import { renderApp } from "../main.js"
 
-const eventHub = document.querySelector(".giffygram")
-const contentTarget = document.querySelector(".navigation")
-
-contentTarget.addEventListener("click", e => {
+document.addEventListener("click", e => {
     if (e.target.id === "directMessageIcon") {
-        eventHub.dispatchEvent(
-            new CustomEvent("directMessage")
-        )
-    }
-    if (e.target.id === "getLatestPosts") {
-        getPosts()
     }
 })
 
-const NavBar = () => {
+document.addEventListener("click", e => {
+    if (e.target.id === "logout") {
+        localStorage.removeItem("gg_user")
+        renderApp()
+    }
+})
 
-    const render = () => {
-        contentTarget.innerHTML = `
+export const NavBar = () => {
+    return `
+        <nav class="navigation">
             <div class="navigation__item navigation__icon">
                 <img src="/images/pb.png" alt="Giffygram icon" />
             </div>
@@ -30,10 +27,9 @@ const NavBar = () => {
             <div class="navigation__item navigation__message">
                 <img id="directMessageIcon" src="/images/fountain-pen.svg" alt="Direct message" />
             </div>
+            <div class="navigation__item navigation__logout">
+                <button id="logout" class="fakeLink">Logout</button>
+            </div>
+        </nav>
         `
-    }
-
-    render()
 }
-
-export default NavBar

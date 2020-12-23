@@ -1,4 +1,4 @@
-import { showGiffygram } from "../main.js"
+import { renderApp } from "../main.js"
 import { getUsers } from "../store/index.js"
 
 
@@ -17,23 +17,26 @@ document.addEventListener("click", clickEvent => {
         }
 
         if (foundUser !== null) {
-            showGiffygram()
+            localStorage.setItem("gg_user", foundUser.id)
+            renderApp()
         }
     }
 })
 
 export const LoginForm = () => {
     return `
+        <div class="loginForm">
             <form>
                 <fieldset>
                     <label for="email">Email:</label>
-                    <input value="steve@brownlee.com" type="text" name="email" autofocus placeholder="Email address" />
+                    <input value="mark@ellis.com" type="text" name="email" autofocus placeholder="Email address" />
                 </fieldset>
                 <fieldset>
                     <label for="password">Password:</label>
-                    <input type="password" value="steve" name="password" placeholder="Password" />
+                    <input type="password" value="mark" name="password" placeholder="Password" />
                 </fieldset>
             </form>
             <button id="loginButton">Login</button>
+        </div>
         `
 }

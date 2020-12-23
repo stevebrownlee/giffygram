@@ -1,4 +1,3 @@
-import { deletePost } from "./PostProvider.js"
 
 
 export const Post = (postObject) => {
@@ -8,6 +7,9 @@ export const Post = (postObject) => {
             <h2 class="post__title">${postObject.title}</h2>
         </header>
         <img class="post__image" src="${postObject.imageURL}" />
+        <div class="post__description">
+            ${postObject.description}
+        </div>
         <div class="post__tagline">
             Posted by
             <a href="#" class="profileLink" id="profile--${postObject.userId}">
