@@ -1,21 +1,32 @@
 /**
  * Main logic module for what should happen on initial page load for Giffygram
  */
-import useSimpleAuth from "./hooks/useSimpleAuth.js"
-import LoginForm from "./auth/Login.js"
 import NavBar from "./nav/NavBar.js"
-import "./views/ApplicationViews.js"
-import GiffyGram from "./GiffyGram.js"
+import { LoginForm } from "./auth/Login.js"
+import { GiffyGram } from "./GiffyGram.js"
+import { getCurrentUser } from "./store/index.js"
 
-NavBar()
+
+const contentTarget = document.querySelector(".giffygram")
+
+export const showLogin = function () {
+    contentTarget.innerHTML = LoginForm()
+}
+
+export const showGiffygram = function () {
+    contentTarget.innerHTML = GiffyGram()
+}
+
 
 /**
  * If user is authenticated, load the main UI, else show login form
  */
-if (useSimpleAuth().isAuthenticated()) {
+const user = getCurrentUser()
+if ("id" in user) {
     console.log("User authenticated")
-    GiffyGram()
+    contentTarget.innerHTML = NavBar()
+    contentTarget.innerHTML += GiffyGram()
 } else {
     console.log("User not authenticated")
-    LoginForm()
+    contentTarget.innerHTML = LoginForm()
 }

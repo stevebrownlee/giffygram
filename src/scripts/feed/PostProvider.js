@@ -16,7 +16,7 @@ const setPosts = postArray => {
 export const createPost = post => {
     const auth = useSimpleAuth()
 
-    return fetch("http://localhost:8088/posts", {
+    return fetch("http://localhost:3000/posts", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -32,7 +32,7 @@ export const createPost = post => {
 export const deletePost = id => {
     const auth = useSimpleAuth()
 
-    return fetch(`http://localhost:8088/posts/${id}`, {
+    return fetch(`http://localhost:3000/posts/${id}`, {
         method: "DELETE",
         headers: {
             "Authorization": `Bearer ${auth.token}`
@@ -45,7 +45,7 @@ export const deletePost = id => {
 export const getPosts = () => {
     const auth = useSimpleAuth()
 
-    return fetch("http://localhost:8088/posts?_expand=user", {
+    return fetch("http://localhost:3000/posts?_expand=user", {
         method: "GET",
         headers: {
             "Accept": "application/json",

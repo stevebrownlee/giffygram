@@ -1,5 +1,4 @@
-
-const PostEntry = () => {
+export const PostHTML = (postObjectToRender) => {
     return `
     <div class="newPost">
         <textarea class="newPost__comment" placeholder="Snarky comment about gif..."></textarea>
@@ -15,5 +14,3 @@ const PostEntry = () => {
     </div>
     `
 }
-
-export default PostEntry

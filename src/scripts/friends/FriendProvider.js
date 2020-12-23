@@ -14,7 +14,7 @@ const setFriends = friendsArray => {
 export const sendDirectMessage = (recipient, text) => {
     const auth = useSimpleAuth()
 
-    return fetch("http://localhost:8088/messages", {
+    return fetch("http://localhost:3000/messages", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -35,7 +35,7 @@ export const sendDirectMessage = (recipient, text) => {
 export const getFriends = () => {
     const auth = useSimpleAuth()
 
-    return fetch("http://localhost:8088/users", {
+    return fetch("http://localhost:3000/users", {
         method: "GET",
         headers: {
             "Accept": "application/json",

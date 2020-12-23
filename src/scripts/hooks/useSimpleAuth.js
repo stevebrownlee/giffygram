@@ -17,7 +17,7 @@ const useSimpleAuth = () => {
     const isAuthenticated = () => localStorage.getItem("gg_token") !== null
 
     const register = userInfo => {
-        return fetch("http://localhost:8088/register", {
+        return fetch("http://localhost:3000/register", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -34,7 +34,7 @@ const useSimpleAuth = () => {
     }
 
     const login = credentials => {
-        return fetch("http://localhost:8088/login", {
+        return fetch("http://localhost:3000/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

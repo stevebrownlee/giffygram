@@ -1,17 +1,23 @@
-import PostList from "./feed/PostList.js"
-import { getPosts } from "./feed/PostProvider.js"
+import { Post } from "./feed/Post.js"
+import { getPosts } from "./store/index.js"
 
-const GiffyGram = () => {
+export const GiffyGram = () => {
     // Show friend bar
 
 
     // Show new message box
 
     // Show main main feed
-    getPosts().then(PostList)
+    const allPosts = getPosts()
+    let htmlStringOfAllPosts = ""
 
+    for (const post of allPosts) {
+        console.log(post)
+        const htmlRepresentationOfThisPost = Post(post)
+        htmlStringOfAllPosts += htmlRepresentationOfThisPost
+    }
+
+    return htmlStringOfAllPosts
 
     // Show updates bar
 }
-
-export default GiffyGram
