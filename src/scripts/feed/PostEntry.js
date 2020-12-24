@@ -25,12 +25,26 @@ export const PostEntry = () => {
     return `
     <div class="newPost">
         <div>
-            <input name="postTitle" class="newPost__input" type="text" placeholder="Title"  />
+            <input value="Learning JavaScript"
+                   name="postTitle"
+                   class="newPost__input"
+                   type="text"
+                   placeholder="Title" />
         </div>
         <div>
-            <input name="postURL" class="newPost__input" type="text" placeholder="URL of gif"  />
+            <input value="https://media.giphy.com/media/S9dN7OWFj8GoRhTIuL/giphy-downsized.gif"
+                   name="postURL"
+                   class="newPost__input"
+                   type="text"
+                   placeholder="URL of gif" />
         </div>
-        <textarea name="postDescription" class="newPost__input newPost__description" placeholder="Story behind your gif..."></textarea>
+
+        <textarea name="postDescription"
+            class="newPost__input newPost__description"
+            placeholder="Story behind your gif...">
+Ethical chillwave jianbing ramps plaid subway tile.
+        </textarea>
+
         <button id="newPost__submit">Save</button>
     </div>
     `

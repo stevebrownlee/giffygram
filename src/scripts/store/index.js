@@ -56,10 +56,10 @@ export const getUsers = () => {
 
 export const getPosts = () => {
     // TODO: Sort by date desc
-    // return [...applicationState.posts].sort((a, b) => {
-    //     return b.timestamp - a.timestamp
-    // })
-    return [...applicationState.posts]
+    return [...applicationState.posts].sort((a, b) => {
+        return b.timestamp - a.timestamp
+    })
+    // return [...applicationState.posts]
 }
 
 export const getUserLikes = () => {
