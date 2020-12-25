@@ -5,7 +5,6 @@ import { NavBar } from "./nav/NavBar.js"
 import { LoginForm } from "./auth/Login.js"
 import { GiffyGram } from "./GiffyGram.js"
 
-
 const contentTarget = document.querySelector(".giffygram")
 
 export const renderApp = () => {

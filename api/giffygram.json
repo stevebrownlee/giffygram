@@ -1,80 +1,115 @@
 {
-  "posts": [
-    {
-      "userId": 2,
-      "remark": "I've got friends on the other side",
-      "url": "",
-      "timestamp": 1585497238567,
-      "id": 3
-    },
-    {
-      "userId": 2,
-      "remark": "Goodbye, Meg",
-      "url": "",
-      "timestamp": 1585497372641,
-      "id": 4
-    },
-    {
-      "userId": 2,
-      "remark": "Five years of NSS",
-      "url": "",
-      "timestamp": 1585497397008,
-      "id": 5
-    },
-    {
-      "userId": {
-        "id": 2,
-        "username": "stevebrownlee"
-      },
-      "remark": "What a dork",
-      "url": "",
-      "timestamp": 1585579423085,
-      "id": 6
-    }
-  ],
-  "messages": [
-    {
-      "userId": 2,
-      "recipient": 3,
-      "text": "mvkw kv kwvkowmkow m",
-      "id": 1
-    },
-    {
-      "userId": 2,
-      "recipient": 1,
-      "text": "v w lmpe2voewn j ",
-      "id": 2
-    }
-  ],
-  "userFavoritePeople": [],
-  "userFavoritePosts": [],
-  "users": [
-    {
-      "email": "admin@admin.com",
-      "password": "$2a$10$dptvdXYZtJhzqFzCWAJw/eJ4MfoIVuM0kLIR3DtIkOTW1zVw6lLTO",
-      "name": "Admina Straytor",
-      "username": "admin",
-      "location": "Nashville, TN",
-      "avatar": "",
-      "id": 1
-    },
-    {
-      "email": "steve@stevebrownlee.com",
-      "password": "$2a$10$hVUr6w5kXP30p5nKRkUQjOa7uXFBO0CwHEzX8k5C7cxcOZ7Pxu.zO",
-      "name": "Steve Brownlee",
-      "username": "stevebrownlee",
-      "location": "Nashville, TN",
-      "avatar": "",
-      "id": 2
-    },
-    {
-      "email": "po@po.com",
-      "password": "$2a$10$rlYdFfol2YsVGln2HX/s4urlvm96ffJvf9mapUOaATzTfemn1Awuu",
-      "name": "Po Bear",
-      "username": "po",
-      "location": "Nashville, TN",
-      "avatar": "",
-      "id": 3
-    }
-  ]
+    "users": [
+        {
+            "id": 1,
+            "name": "Ray Medrano",
+            "email": "ray@medrano.com",
+            "password": "ray"
+        },
+        {
+            "id": 2,
+            "name": "Meg Ducharme",
+            "email": "meg@ducharme.com",
+            "password": "meg"
+        },
+        {
+            "id": 3,
+            "name": "Mark Ellis",
+            "email": "mark@ellis.com",
+            "password": "mark"
+        },
+        {
+            "id": 4,
+            "name": "Daniella Agnoletti",
+            "email": "daniella@agnoletti.com",
+            "password": "daniella"
+        },
+        {
+            "id": 5,
+            "name": "Kimmy Bird",
+            "email": "kimmy@bird.com",
+            "password": "kimmy"
+        },
+        {
+            "id": 6,
+            "name": "Emily Lemmon",
+            "email": "emily@lemmon.com",
+            "password": "emily"
+        }
+    ],
+    "posts": [
+        {
+            "id": 1,
+            "userId": 1,
+            "title": "My first post",
+            "imageURL": "https://media.giphy.com/media/3oz8xyUoD2HlTIcdTW/giphy.gif",
+            "description": "Jianbing butcher post-ironic brunch marfa, listicle quinoa kickstarter vinyl poke cornhole snackwave yr flexitarian.",
+            "timestamp": 1608080619498
+        },
+        {
+            "id": 2,
+            "userId": 2,
+            "title": "Dinner",
+            "imageURL": "https://media.giphy.com/media/4RslNp4SUqAoM/giphy.gif",
+            "description": "Messenger bag hella gochujang adaptogen, aesthetic sartorial before they sold out franzen sustainable thundercats.",
+            "timestamp": 1608680619498
+        },
+        {
+            "id": 3,
+            "userId": 2,
+            "title": "Graduation!",
+            "imageURL": "https://media.giphy.com/media/lSPlEENLTonvclZP44/giphy.gif",
+            "description": "Pop-up biodiesel pickled crucifix. Tousled succulents banjo bicycle rights.",
+            "timestamp": 1608720619498
+        }
+    ],
+    "likes": [
+        {
+            "id": 1,
+            "userId": 1,
+            "postId": 2
+        },
+        {
+            "id": 2,
+            "userId": 3,
+            "postId": 2
+        },
+        {
+            "id": 3,
+            "userId": 2,
+            "postId": 1
+        }
+    ],
+    "messages": [
+        {
+            "userId": 2,
+            "recipient": 3,
+            "text": "mvkw kv kwvkowmkow m",
+            "id": 1
+        },
+        {
+            "userId": 2,
+            "recipient": 1,
+            "text": "v w lmpe2voewn j ",
+            "id": 2
+        }
+    ],
+    "follows": [
+        {
+            "id": 1,
+            "userId": 1,
+            "followingId": 2
+        },
+        {
+            "id": 2,
+            "userId": 3,
+            "followingId": 2
+        },
+        {
+            "id": 3,
+            "userId": 2,
+            "followingId": 1
+        }
+
+    ]
 }
