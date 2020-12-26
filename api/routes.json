@@ -2,6 +2,6 @@
     "/users*": "/640/users$1",
     "/posts*": "/660/posts$1",
     "/messages*": "/660/messages$1",
-    "/userFavoritePeople*": "/600/userFavoritePeople$1",
-    "/userFavoritePosts*": "/600/userFavoritePosts$1"
+    "/follows*": "/600/follows$1",
+    "/likes*": "/600/likes$1"
 }
