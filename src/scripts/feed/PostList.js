@@ -1,66 +1,14 @@
-import { usePosts, createPost, getPosts } from "./PostProvider.js"
-import Post from "./Post.js"
-import PostEntry from "./PostEntry.js"
-import useSimpleAuth from "../hooks/useSimpleAuth.js"
+import { getPosts } from "../store/index.js"
+import { Post } from "./Post.js"
 
-const eventHub = document.querySelector(".giffygram")
-const contentTarget = document.querySelector(".feed")
+export const PostList = () => {
+    const allPosts = getPosts()
+    let htmlStringOfAllPosts = ""
 
-eventHub.addEventListener("postsStateChange", e => {
-    const updatedPosts = usePosts()
-    render(updatedPosts)
-})
-
-const uploadFile = file => {
-    const auth = useSimpleAuth()
-
-    let reader = new FileReader()
-    reader.onloadend = function() {
-        createPost({
-            userId: auth.user,
-            image: reader.result,
-            remark: document.querySelector(".newPost__comment").value,
-            url: "",
-            timestamp: Date.now()
-        })
-    }
-    reader.readAsDataURL(file)
-}
-
-const intializeDrop = () => {
-    const dropZone = document.querySelector(".newPost__drop")
-
-    const highlight = e => dropZone.classList.add('highlight')
-    const unhighlight = e => dropZone.classList.remove('highlight')
-
-    const preventDefaults = e => {
-        e.preventDefault()
-        e.stopPropagation()
+    for (const post of allPosts) {
+        const htmlRepresentationOfThisPost = Post(post)
+        htmlStringOfAllPosts += htmlRepresentationOfThisPost
     }
 
-    ;['dragenter', 'dragover', 'dragleave', 'drop'].forEach(e => dropZone.addEventListener(e, preventDefaults, false))
-    ;['dragenter', 'dragover'].forEach(e => dropZone.addEventListener(e, highlight, false))
-    ;['dragleave', 'drop'].forEach(e => dropZone.addEventListener(e, unhighlight, false))
-
-    dropZone.addEventListener('drop', e => uploadFile(e.dataTransfer.files[0]), false)
+    return htmlStringOfAllPosts
 }
-
-const render = (posts) => {
-    console.log("****  Rendering posts  ****")
-
-    contentTarget.innerHTML = `
-        ${ PostEntry() }
-        ${ posts.map(Post).join("") }
-    `
-
-    intializeDrop()
-}
-
-const PostList = () => {
-    getPosts().then(() => {
-        const posts = usePosts()
-        render(posts)
-    })
-}
-
-export default PostList

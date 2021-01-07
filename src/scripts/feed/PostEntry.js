@@ -1,6 +1,23 @@
 import { renderApp } from "../main.js"
 import { saveNewPost } from "../store/index.js"
 
+let miniMode = true
+
+document.addEventListener("click", clickEvent => {
+    if (clickEvent.target.id === "miniMode") {
+        miniMode = false
+        renderApp()
+    }
+})
+
+
+document.addEventListener("click", clickEvent => {
+    if (clickEvent.target.id === "newPost__cancel") {
+        miniMode = true
+        renderApp()
+    }
+})
+
 document.addEventListener("click", clickEvent => {
     if (clickEvent.target.id === "newPost__submit") {
         const title = document.querySelector("input[name='postTitle']").value
@@ -16,36 +33,40 @@ document.addEventListener("click", clickEvent => {
         }
 
         saveNewPost(postObect)
-
+        miniMode = true
         renderApp()
     }
 })
 
 export const PostEntry = () => {
-    return `
-    <div class="newPost">
-        <div>
-            <input value="Learning JavaScript"
-                   name="postTitle"
-                   class="newPost__input"
-                   type="text"
-                   placeholder="Title" />
-        </div>
-        <div>
-            <input value="https://media.giphy.com/media/S9dN7OWFj8GoRhTIuL/giphy-downsized.gif"
-                   name="postURL"
-                   class="newPost__input"
-                   type="text"
-                   placeholder="URL of gif" />
-        </div>
+    if (miniMode) {
+        return `<div class="miniMode" id="miniMode">Have a gif to post?</div>`
+    }
+    else {
+        return `
+        <div class="newPost">
+            <div>
+                <input value="Learning JavaScript"
+                       name="postTitle"
+                       class="newPost__input"
+                       type="text"
+                       placeholder="Title" />
+            </div>
+            <div>
+                <input value="https://media.giphy.com/media/S9dN7OWFj8GoRhTIuL/giphy-downsized.gif"
+                       name="postURL"
+                       class="newPost__input"
+                       type="text"
+                       placeholder="URL of gif" />
+            </div>
 
-        <textarea name="postDescription"
-            class="newPost__input newPost__description"
-            placeholder="Story behind your gif...">
-Ethical chillwave jianbing ramps plaid subway tile.
-        </textarea>
+            <textarea name="postDescription"
+                class="newPost__input newPost__description"
+                placeholder="Story behind your gif...">Ethical chillwave jianbing ramps plaid subway tile.</textarea>
 
-        <button id="newPost__submit">Save</button>
-    </div>
-    `
+            <button id="newPost__submit">Save</button>
+            <button id="newPost__cancel">Cancel</button>
+        </div>
+        `
+    }
 }

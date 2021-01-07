@@ -15,8 +15,7 @@ export const renderApp = () => {
      */
     if (user) {
         console.log("User authenticated")
-        contentTarget.innerHTML = NavBar()
-        contentTarget.innerHTML += GiffyGram()
+        contentTarget.innerHTML = GiffyGram()
     } else {
         console.log("User not authenticated")
         contentTarget.innerHTML = LoginForm()

@@ -1,29 +1,15 @@
-import { Post } from "./feed/Post.js"
+import { NavBar } from "./nav/NavBar.js"
 import { PostEntry } from "./feed/PostEntry.js"
-import { getPosts } from "./store/index.js"
+import { PostList } from "./feed/PostList.js"
 
 export const GiffyGram = () => {
-    // Show friend bar
 
-
-    // Show new message box
-
-
-    // Show main main feed
-    const allPosts = getPosts()
-    let htmlStringOfAllPosts = ""
-
-    for (const post of allPosts) {
-        const htmlRepresentationOfThisPost = Post(post)
-        htmlStringOfAllPosts += htmlRepresentationOfThisPost
-    }
-
+    // Show main main UI
     return `
+        ${NavBar()}
         <div class="giffygram__feed">
             ${PostEntry()}
-            ${htmlStringOfAllPosts}
+            ${PostList()}
         </div>
     `
-
-    // Show updates bar
 }
