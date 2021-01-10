@@ -1,4 +1,3 @@
-import { renderApp } from "../main.js"
 import { getUsers } from "../store/index.js"
 
 
@@ -18,7 +17,7 @@ document.addEventListener("click", clickEvent => {
 
         if (foundUser !== null) {
             localStorage.setItem("gg_user", foundUser.id)
-            renderApp()
+            document.querySelector(".giffygram").dispatchEvent(new CustomEvent("stateChanged"))
         }
     }
 })

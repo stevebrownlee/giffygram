@@ -1,12 +1,12 @@
-import { renderApp } from "../main.js"
 import { saveNewPost } from "../store/index.js"
 
 let miniMode = true
+const applicationElement = document.querySelector(".giffygram")
 
 document.addEventListener("click", clickEvent => {
     if (clickEvent.target.id === "miniMode") {
         miniMode = false
-        renderApp()
+        applicationElement.dispatchEvent(new CustomEvent("stateChanged"))
     }
 })
 
@@ -14,7 +14,7 @@ document.addEventListener("click", clickEvent => {
 document.addEventListener("click", clickEvent => {
     if (clickEvent.target.id === "newPost__cancel") {
         miniMode = true
-        renderApp()
+        applicationElement.dispatchEvent(new CustomEvent("stateChanged"))
     }
 })
 
@@ -34,7 +34,7 @@ document.addEventListener("click", clickEvent => {
 
         saveNewPost(postObect)
         miniMode = true
-        renderApp()
+        applicationElement.dispatchEvent(new CustomEvent("stateChanged"))
     }
 })
 

@@ -1,5 +1,3 @@
-import { renderApp } from "../main.js"
-
 document.addEventListener("click", e => {
     if (e.target.id === "directMessageIcon") {
     }
@@ -8,7 +6,7 @@ document.addEventListener("click", e => {
 document.addEventListener("click", e => {
     if (e.target.id === "logout") {
         localStorage.removeItem("gg_user")
-        renderApp()
+        document.querySelector(".giffygram").dispatchEvent(new CustomEvent("stateChanged"))
     }
 })
 

@@ -59,10 +59,30 @@ export const saveNewPost = (newPostObject) => {
     let lastId = applicationState.posts[applicationState.posts.length - 1].id
     newPostObject.id = lastId++
     applicationState.posts.push(newPostObject)
+
+
+    /*
+        When the delete function is put in, students will discover that
+        it leads to an error if they add a new one if they others all get
+        deleted. This is the code they would need to figure out.
+
+
+            let lastId = 0
+            if (applicationState.posts.length) {
+                lastId = applicationState.posts[applicationState.posts.length - 1].id
+            }
+            newPostObject.id = lastId++
+            applicationState.posts.push(newPostObject)
+    */
 }
 
 export const getUsers = () => {
     return [...applicationState.users]
+}
+
+export const deletePost = (id) => {
+    const index = applicationState.posts.findIndex(p => p.id === id)
+    applicationState.posts.splice(index, 1)
 }
 
 export const getPosts = () => {
@@ -70,7 +90,18 @@ export const getPosts = () => {
     return [...applicationState.posts].sort((a, b) => {
         return b.timestamp - a.timestamp
     })
-    // return [...applicationState.posts]
+    /*
+        Students start with the following code. They need to watch a
+        video and have a reference link to the JavaScript sort method
+        to do the code above.
+
+            return [...applicationState.posts]
+
+
+        Later, a practice section should be to add two buttons to sort
+        in both directions. This function should be modified to
+        support both.
+    */
 }
 
 export const getLikes = () => {
