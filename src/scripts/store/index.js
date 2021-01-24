@@ -7,6 +7,9 @@
 
 const applicationState = {
     currentUser: {},
+    feed: {
+        chosenUser: null,
+    },
     users: [
         { id: 1, name: "Ray Medrano", email: "ray@medrano.com", password: "ray" },
         { id: 2, name: "Meg Ducharme", email: "meg@ducharme.com", password: "meg" },
@@ -132,16 +135,38 @@ export const getUsers = () => {
     return [...applicationState.users]
 }
 
+export const getChosenUser = () => {
+    return applicationState.feed.chosenUser
+}
+
 export const deletePost = (id) => {
     const index = applicationState.posts.findIndex(p => p.id === id)
     applicationState.posts.splice(index, 1)
 }
 
+export const setChosenUser = userId => {
+    applicationState.feed.chosenUser = userId
+}
+
 export const getPosts = () => {
     // TODO: Sort by date desc
-    return [...applicationState.posts].sort((a, b) => {
+    let posts = [...applicationState.posts].sort((a, b) => {
         return b.timestamp - a.timestamp
     })
+
+    if (applicationState.feed.chosenUser !== null) {
+        const userPosts = []
+
+        for (const post of posts) {
+            if (post.userId === applicationState.feed.chosenUser) {
+                userPosts.push(post)
+            }
+        }
+
+        posts = userPosts
+    }
+
+    return posts
     /*
         Students start with the following code. They need to watch a
         video and have a reference link to the JavaScript sort method

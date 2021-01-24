@@ -37,5 +37,5 @@ export const LoginForm = () => {
             </form>
             <button id="loginButton">Login</button>
         </div>
-        `
+    `
 }
