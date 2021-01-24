@@ -1,4 +1,9 @@
-// Text from https://hipsum.co/
+/*
+    To get even more fake posts data, visit https://mockaroo.com/schemas/287232
+    and generate as many rows as you like, up to 1000.
+*/
+
+
 
 const applicationState = {
     currentUser: {},
@@ -12,29 +17,76 @@ const applicationState = {
     ],
     posts: [
         {
-            id: 1,
-            userId: 1,
-            title: "My first post",
-            imageURL: "https://media.giphy.com/media/3oz8xyUoD2HlTIcdTW/giphy.gif",
-            description: "Jianbing butcher post-ironic brunch marfa, listicle quinoa kickstarter vinyl poke cornhole snackwave yr flexitarian.",
-            timestamp: 1608080619498
-        },
-        {
-            id: 2,
-            userId: 2,
-            title: "Dinner",
-            imageURL: "https://media.giphy.com/media/4RslNp4SUqAoM/giphy.gif",
-            description: "Messenger bag hella gochujang adaptogen, aesthetic sartorial before they sold out franzen sustainable thundercats.",
-            timestamp: 1608680619498
-        },
-        {
-            id: 3,
-            userId: 2,
-            title: "Graduation!",
-            imageURL: "https://media.giphy.com/media/lSPlEENLTonvclZP44/giphy.gif",
-            description: "Pop-up biodiesel pickled crucifix. Tousled succulents banjo bicycle rights.",
-            timestamp: 1608720619498
-        }
+            "id": 1,
+            "userId": 2,
+            "description": "Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.",
+            "imageURL": "https://media.giphy.com/media/YqGeOQ0u6hB5u/giphy-downsized.gif",
+            "timestamp": 1580005022812,
+            "title": "Self-enabling directional array"
+          }, {
+            "id": 2,
+            "imageURL": "https://media.giphy.com/media/26xBI73gWquCBBCDe/giphy.gif",
+            "userId": 6,
+            "description": "Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.\n\nDuis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.",
+            "timestamp": 1561695022812,
+            "title": "Enhanced global utilisation"
+          }, {
+            "id": 3,
+            "userId": 1,
+            "description": "Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.\n\nPhasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.",
+            "timestamp": 1560695022812,
+            "imageURL": "https://media.giphy.com/media/ai54771DmS5P2/giphy-downsized.gif",
+            "title": "Centralized uniform internet solution"
+          }, {
+            "id": 4,
+            "imageURL": "https://media.giphy.com/media/IMDSOJvLn9RaU/giphy.gif",
+            "userId": 3,
+            "description": "Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.",
+            "timestamp": 1559695022812,
+            "title": "Compatible neutral instruction set"
+          }, {
+            "id": 5,
+            "userId": 3,
+            "imageURL": "https://media.giphy.com/media/1hM7Ldvcpps01Cwles/giphy-downsized.gif",
+            "description": "Vestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis.\n\nDuis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.\n\nMauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero.",
+            "timestamp": 1558995022812,
+            "title": "Integrated foreground hierarchy"
+          }, {
+            "id": 6,
+            "userId": 5,
+            "description": "Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.\n\nCurabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.",
+            "imageURL": "https://media.giphy.com/media/3hUqPBrfHzfZ6/giphy-downsized.gif",
+            "timestamp": 1537695022812,
+            "title": "Total holistic task-force"
+          }, {
+            "imageURL": "https://media.giphy.com/media/d8WjGORtSEWqc/giphy-downsized.gif",
+            "id": 7,
+            "userId": 4,
+            "description": "Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.\n\nCurabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.\n\nPhasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.",
+            "timestamp": 1522695022812,
+            "title": "Future-proofed context-sensitive software"
+        }, {
+            "id": 8,
+            "imageURL": "https://media.giphy.com/media/Eva5ChclYOKly/giphy.gif",
+            "userId": 4,
+            "description": "Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui.",
+            "timestamp": 1514695022812,
+            "title": "Balanced exuding definition"
+        }, {
+            "id": 9,
+            "userId": 5,
+            "imageURL": "https://media.giphy.com/media/S18kGlKwjxNp6/giphy.gif",
+            "description": "Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.\n\nCurabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.\n\nInteger tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.",
+            "timestamp": 1509695022812,
+            "title": "Programmable client-driven function"
+          }, {
+            "id": 10,
+            "userId": 1,
+            "description": "Aenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.\n\nQuisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.",
+            "imageURL": "https://media.giphy.com/media/BtQVuwFhqIpOw/giphy.gif",
+            "timestamp": 1504795022812,
+            "title": "Open-source bifurcated policy"
+          }
     ],
     likes: [
         {
