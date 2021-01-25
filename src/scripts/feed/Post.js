@@ -1,4 +1,4 @@
-import { deletePost } from "../store/index.js"
+import { deletePost, getShowFavorites } from "../store/index.js"
 
 document.addEventListener("click", (e) => {
     if (e.target.id.startsWith("blockPost--")) {
@@ -9,6 +9,8 @@ document.addEventListener("click", (e) => {
 })
 
 export const Post = (postObject) => {
+    const favoritesShown = getShowFavorites()
+
     return `
     <section class="post">
         <header>
@@ -27,7 +29,13 @@ export const Post = (postObject) => {
         </div>
         <div class="post__actions">
             <div>
-                <img id="favoritePost--${postObject.id}" class="actionIcon" src="/images/favorite-star-blank.svg" />
+                <img id="favoritePost--${postObject.id}"
+                    class="actionIcon"
+                    src="${!postObject.favorite
+                            ? "/images/favorite-star-blank.svg"
+                            : "/images/favorite-star-yellow.svg"
+                        }"
+                />
             </div>
             <div>
                 <img id="blockPost--${postObject.id}" class="actionIcon" src="/images/block.svg" />
