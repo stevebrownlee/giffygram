@@ -9,6 +9,7 @@ const applicationState = {
     currentUser: {},
     feed: {
         chosenUser: null,
+        displayFavorites: false
     },
     users: [
         { id: 1, name: "Ray Medrano", email: "ray@medrano.com", password: "ray" },
@@ -104,6 +105,16 @@ const applicationState = {
         },
         {
             id: 3,
+            userId: 3,
+            postId: 5
+        },
+        {
+            id: 4,
+            userId: 3,
+            postId: 7
+        },
+        {
+            id: 5,
             userId: 2,
             postId: 1
         }
@@ -135,6 +146,13 @@ export const getUsers = () => {
     return [...applicationState.users]
 }
 
+export const toggleFavoritesOnly = (choice) => {
+    if (choice) {
+        applicationState.feed.chosenUser = null
+    }
+    applicationState.feed.displayFavorites = choice
+}
+
 export const getChosenUser = () => {
     return applicationState.feed.chosenUser
 }
@@ -149,12 +167,23 @@ export const setChosenUser = userId => {
 }
 
 export const getPosts = () => {
-    // TODO: Sort by date desc
+    // Step 1: Sort all the posts by date
     let posts = [...applicationState.posts].sort((a, b) => {
         return b.timestamp - a.timestamp
     })
 
-    if (applicationState.feed.chosenUser !== null) {
+    // If a user was chosen in the footer, filter to that user's posts
+    if (applicationState.feed.displayFavorites === true) {
+        const favePosts = applicationState.likes.filter(l => l.userId === parseInt(localStorage.getItem("gg_user")))
+        debugger
+
+        for (const favePost of favePosts) {
+            favePost.post = posts.find(p => p.id === favePost.postId)
+        }
+
+        posts = favePosts.map(fp => fp.post)
+    }
+    else if (applicationState.feed.chosenUser !== null) {
         const userPosts = []
 
         for (const post of posts) {
@@ -166,6 +195,7 @@ export const getPosts = () => {
         posts = userPosts
     }
 
+    // Return the posts that have been sorted and filtered
     return posts
     /*
         Students start with the following code. They need to watch a

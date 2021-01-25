@@ -1,16 +1,29 @@
-import { getChosenUser, getPosts, getUsers, setChosenUser } from "../store/index.js"
+import { getChosenUser, getPosts, getUsers, setChosenUser, toggleFavoritesOnly } from "../store/index.js"
 
+/*
+    Component state variables
+*/
+const applicationElement = document.querySelector(".giffygram")
 const posts = getPosts()
 const users = getUsers()
-const applicationElement = document.querySelector(".giffygram")
+let postCount = 0
 
 /*
     Update the post count when the user changes the year selection
 */
 applicationElement.addEventListener("change", changeEvent => {
+    if (changeEvent.target.id === "showOnlyFavorites") {
+        toggleFavoritesOnly(changeEvent.target.checked)
+        applicationElement.dispatchEvent(new CustomEvent("stateChanged"))
+    }
+})
+applicationElement.addEventListener("change", changeEvent => {
     if (changeEvent.target.id === "yearSelection") {
-        const chosenYear = changeEvent.target.value
-        document.querySelector("#postCount").textContent = postsSince(parseInt(chosenYear))
+        const yearAsNumber = parseInt(changeEvent.target.value)
+        const postCountOutput = document.querySelector("#postCount")
+
+        postCount = postsSince(yearAsNumber)
+        postCountOutput.textContent = postCount
     }
 })
 
@@ -41,7 +54,7 @@ const postsSince = (year) => {
 /*
     Initial state of post count is number since 2020
 */
-const postCount = postsSince(2020)
+postCount = postsSince(2020)
 
 export const Footer = () => {
     return `
@@ -63,6 +76,9 @@ export const Footer = () => {
                          id="user--${user.id}">${user.id}</option>
                     `)}
                 </select>
+            </div>
+            <div class="footer__item">
+            Show only favorites <input id="showOnlyFavorites" type="checkbox" />
             </div>
         </footer>
     `
