@@ -1,39 +1,28 @@
-import { getUsers, savenewMessages } from "../store/index.js"
+import { getUsers, saveMessage } from "../store/index.js"
 
 let miniMode = true
 const applicationElement = document.querySelector(".giffygram")
 
 document.addEventListener("click", clickEvent => {
-    if (clickEvent.target.id === "miniMode") {
-        miniMode = false
-        applicationElement.dispatchEvent(new CustomEvent("stateChanged"))
-    }
-})
-
-
-document.addEventListener("click", clickEvent => {
-    if (clickEvent.target.id === "newMessages__cancel") {
-        miniMode = true
+    if (clickEvent.target.id === "directMessageIcon") {
+        miniMode = !miniMode
         applicationElement.dispatchEvent(new CustomEvent("stateChanged"))
     }
 })
 
 document.addEventListener("click", clickEvent => {
-    if (clickEvent.target.id === "newMessages__submit") {
-        const title = document.querySelector("input[name='postTitle']").value
-        const url = document.querySelector("input[name='postURL']").value
-        const description = document.querySelector("textarea[name='postDescription']").value
+    if (clickEvent.target.id === "directMessage__submit") {
+        const recipient = document.querySelector("select[name='directMessage__userSelect']").value
+        const message = document.querySelector("input[name='message']").value
+        const [prefix, recipientId] = recipient.split("--")
 
-        const postObect = {
-            title: title,
-            imageURL: url,
-            description: description,
+        const messageObject = {
             userId: parseInt(localStorage.getItem("gg_user")),
-            timestamp: Date.now()
+            recipientId: parseInt(recipientId),
+            message: message
         }
 
-        savenewMessages(postObect)
-        miniMode = true
+        saveMessage(messageObject)
         applicationElement.dispatchEvent(new CustomEvent("stateChanged"))
     }
 })
@@ -47,25 +36,26 @@ export const MessageForm = () => {
     }
     else {
         return `
-        <div class="newMessages">
+        <div class="directMessage">
+            <h3>Direct Message</h3>
             <div>Recipient:
-                <select id="newMessages__userSelect">
+                <select name="directMessage__userSelect" class="message__input">
                     <option>Choose a recipient...</option>
                     ${
-                        users.map(u => `<option id="messageRecipient--${u.id}">${u.id}</option>`)
+                        users.map(u => `<option value="messageRecipient--${u.id}">${u.id}</option>`)
                     }
                 </select>
             </div>
             <div>
-                <label for="directMessage">Message:</label>
-                <input name="directMessage"
-                       class="newMessages__message"
+                <label for="message">Message:</label>
+                <input name="message"
+                       class="message__input"
                        type="text"
                        placeholder="Message to user" />
             </div>
 
-            <button id="newMessages__submit">Save</button>
-            <button id="newMessages__cancel">Cancel</button>
+            <button id="directMessage__submit">Save</button>
+            <button id="directMessage__cancel">Cancel</button>
         </div>
         `
     }

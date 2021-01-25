@@ -118,7 +118,30 @@ const applicationState = {
             userId: 2,
             postId: 1
         }
+    ],
+    messages: [
+        {
+            id: 1,
+            userId: 4,
+            recipientId: 3,
+            message: "testing 1,2,3"
+        }
     ]
+}
+
+export const getMessages = () => {
+    return [...applicationState.messages]
+}
+
+export const saveMessage = message => {
+    let lastId = 0
+
+    if (applicationState.messages.length) {
+        lastId = applicationState.messages[applicationState.messages.length - 1].id
+    }
+    message.id = lastId++
+
+    applicationState.messages.push(message)
 }
 
 export const saveNewPost = (newPostObject) => {

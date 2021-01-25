@@ -1,7 +1,4 @@
-document.addEventListener("click", e => {
-    if (e.target.id === "directMessageIcon") {
-    }
-})
+import { getMessages } from "../store/index.js"
 
 document.addEventListener("click", e => {
     if (e.target.id === "logout") {
@@ -11,6 +8,8 @@ document.addEventListener("click", e => {
 })
 
 export const NavBar = () => {
+    const messages = getMessages().filter(m => m.recipientId === parseInt(localStorage.getItem("gg_user")))
+
     return `
         <nav class="navigation">
             <div class="navigation__item navigation__icon">
@@ -24,6 +23,11 @@ export const NavBar = () => {
             </div>
             <div class="navigation__item navigation__message">
                 <img id="directMessageIcon" src="/images/fountain-pen.svg" alt="Direct message" />
+                <div class="notification__count">
+                    ${
+                        messages.length > 0 ? `${messages.length}` : ""
+                    }
+                </div>
             </div>
             <div class="navigation__item navigation__logout">
                 <button id="logout" class="fakeLink">Logout</button>
