@@ -1,4 +1,4 @@
-import { deletePost, getShowFavorites } from "../store/index.js"
+import { deletePost } from "../store/index.js"
 
 document.addEventListener("click", (e) => {
     if (e.target.id.startsWith("blockPost--")) {
@@ -9,8 +9,6 @@ document.addEventListener("click", (e) => {
 })
 
 export const Post = (postObject) => {
-    const favoritesShown = getShowFavorites()
-
     return `
     <section class="post">
         <header>

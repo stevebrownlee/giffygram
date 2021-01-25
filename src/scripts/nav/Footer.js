@@ -20,6 +20,7 @@ export const Footer = () => {
             applicationElement.dispatchEvent(new CustomEvent("stateChanged"))
         }
     })
+
     applicationElement.addEventListener("change", changeEvent => {
         if (changeEvent.target.id === "yearSelection") {
             const yearAsNumber = parseInt(changeEvent.target.value)
@@ -76,7 +77,7 @@ export const Footer = () => {
                     ${users.map(user => `
                         <option
                             ${getChosenUser() === user.id ? "selected" : ""}
-                         id="user--${user.id}">${user.id}</option>
+                            id="user--${user.id}">${user.id}</option>
                     `)}
                 </select>
             </div>

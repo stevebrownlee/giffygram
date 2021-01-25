@@ -143,7 +143,8 @@ export const saveNewPost = (newPostObject) => {
 }
 
 export const getUsers = () => {
-    return [...applicationState.users]
+    const currentUser = parseInt(localStorage.getItem("gg_user"))
+    return [...applicationState.users].filter(u => u.id !== currentUser)
 }
 
 export const toggleFavoritesOnly = (choice) => {
