@@ -168,6 +168,7 @@ export const deletePost = (id) => {
 
 export const setChosenUser = userId => {
     applicationState.feed.chosenUser = userId
+    applicationState.feed.displayFavorites = false
 }
 
 export const getPosts = () => {
