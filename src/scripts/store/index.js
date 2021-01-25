@@ -157,6 +157,10 @@ export const getChosenUser = () => {
     return applicationState.feed.chosenUser
 }
 
+export const getShowFavorites = () => {
+    return applicationState.feed.displayFavorites
+}
+
 export const deletePost = (id) => {
     const index = applicationState.posts.findIndex(p => p.id === id)
     applicationState.posts.splice(index, 1)
@@ -175,7 +179,6 @@ export const getPosts = () => {
     // If a user was chosen in the footer, filter to that user's posts
     if (applicationState.feed.displayFavorites === true) {
         const favePosts = applicationState.likes.filter(l => l.userId === parseInt(localStorage.getItem("gg_user")))
-        debugger
 
         for (const favePost of favePosts) {
             favePost.post = posts.find(p => p.id === favePost.postId)
