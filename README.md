@@ -6,7 +6,7 @@ Track your friends' favorite gifs.
 
 ## Setup
 
-1. Install API server with `npm i -g json-server-auth`
+1. Install API server with `npm i -g json-server`
 1. Clone this repository
 
 ### Starting the API
@@ -14,7 +14,7 @@ Track your friends' favorite gifs.
 Open a terminal window and go to the `giffygram` directory.
 
 1. `cd api`
-1. `json-server-auth -p 8088 -r routes.json`
+1. `json-server giffygram.json`
 
 ### Starting the Web Server
 
@@ -25,7 +25,7 @@ Open a terminal window and go to the `giffygram` directory.
 
 Then visit http://localhost:8080 and login with the following credentials.
 
-* Email: admin@admin.com
-* Password: Admin8*
+* Email: meg@ducharme.com
+* Password: meg
 
 Once you are authenticated, you should see two posts render to the feed component.
