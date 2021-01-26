@@ -2,7 +2,7 @@
 
 Track your friends' favorite gifs.
 
-![giffygram feed image](./giffygram.png)
+![giffygram feed image](./giffygram.gif)
 
 ## Setup
 
