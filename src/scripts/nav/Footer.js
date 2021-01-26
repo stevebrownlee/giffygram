@@ -1,25 +1,34 @@
 import { getChosenUser, getPosts, getShowFavorites, getUsers, setChosenUser, toggleFavoritesOnly } from "../store/index.js"
 
+const applicationElement = document.querySelector(".giffygram")
+
+applicationElement.addEventListener("change", changeEvent => {
+    if (changeEvent.target.id === "userSelection") {
+        setChosenUser(parseInt(changeEvent.target.value))
+        applicationElement.dispatchEvent(new CustomEvent("stateChanged"))
+    }
+})
+
+applicationElement.addEventListener("change", changeEvent => {
+    if (changeEvent.target.id === "showOnlyFavorites") {
+        toggleFavoritesOnly(changeEvent.target.checked)
+        applicationElement.dispatchEvent(new CustomEvent("stateChanged"))
+    }
+})
+
+let postCount = 0
 
 export const Footer = () => {
     /*
         Component state variables
     */
-    const applicationElement = document.querySelector(".giffygram")
     const posts = getPosts()
     const users = getUsers()
     const favoritesDisplayed = getShowFavorites()
-    let postCount = 0
 
     /*
         Update the post count when the user changes the year selection
     */
-    applicationElement.addEventListener("change", changeEvent => {
-        if (changeEvent.target.id === "showOnlyFavorites") {
-            toggleFavoritesOnly(changeEvent.target.checked)
-            applicationElement.dispatchEvent(new CustomEvent("stateChanged"))
-        }
-    })
 
     applicationElement.addEventListener("change", changeEvent => {
         if (changeEvent.target.id === "yearSelection") {
@@ -30,14 +39,6 @@ export const Footer = () => {
             postCountOutput.textContent = postCount
         }
     })
-
-    applicationElement.addEventListener("change", changeEvent => {
-        if (changeEvent.target.id === "userSelection") {
-            setChosenUser(parseInt(changeEvent.target.value))
-            applicationElement.dispatchEvent(new CustomEvent("stateChanged"))
-        }
-    })
-
 
     /*
         Calculate the number of posts since a given year
