@@ -1,13 +1,10 @@
 # Giffygram
 
-Track your friends' favorite gifs.
+For this project, you will be building a web application that lets people post their favorite gifs. Each post can be favorited by other users, and deleted by the original author.
+
+Users can also send direct messages to each other, and be notified when they have messages.
 
 ![giffygram feed image](./giffygram.gif)
-
-## Setup
-
-1. Install API server with `npm i -g json-server`
-1. Clone this repository
 
 ### Starting the API
 
