@@ -61,6 +61,14 @@
       "imageURL": "https://media.giphy.com/media/lSPlEENLTonvclZP44/giphy.gif",
       "description": "Pop-up biodiesel pickled crucifix. Tousled succulents banjo bicycle rights.",
       "timestamp": 1608720619498
+    },
+    {
+      "title": "Learning JavaScript",
+      "imageURL": "https://media.giphy.com/media/S9dN7OWFj8GoRhTIuL/giphy-downsized.gif",
+      "description": "Ethical chillwave jianbing ramps plaid subway tile.",
+      "userId": 2,
+      "timestamp": 1617192309158,
+      "id": 4
     }
   ],
   "likes": [

@@ -33,8 +33,12 @@ document.addEventListener("click", clickEvent => {
         }
 
         savePost(postObect)
-        miniMode = true
-        applicationElement.dispatchEvent(new CustomEvent("stateChanged"))
+            .then(
+                () => {
+                    miniMode = true
+                    applicationElement.dispatchEvent(new CustomEvent("stateChanged"))
+                }
+            )
     }
 })
 
