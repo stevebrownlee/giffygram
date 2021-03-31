@@ -1,4 +1,4 @@
-import { getChosenUser, getPosts, getShowFavorites, getUsers, setChosenUser, toggleFavoritesOnly } from "../store/index.js"
+import { getChosenUser, getPosts, getShowFavorites, getUsers, setChosenUser, toggleFavoritesOnly } from "../data/provider.js"
 
 const applicationElement = document.querySelector(".giffygram")
 

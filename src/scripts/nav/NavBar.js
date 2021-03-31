@@ -1,4 +1,4 @@
-import { getMessages } from "../store/index.js"
+import { getMessages } from "../data/provider.js"
 
 document.addEventListener("click", e => {
     if (e.target.id === "logout") {

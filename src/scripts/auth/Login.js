@@ -1,4 +1,4 @@
-import { getUsers } from "../store/index.js"
+import { getUsers } from "../data/provider.js"
 
 
 document.addEventListener("click", clickEvent => {

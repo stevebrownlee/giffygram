@@ -1,4 +1,4 @@
-import { saveNewPost } from "../store/index.js"
+import { savePost } from "../data/provider.js"
 
 let miniMode = true
 const applicationElement = document.querySelector(".giffygram")
@@ -32,7 +32,7 @@ document.addEventListener("click", clickEvent => {
             timestamp: Date.now()
         }
 
-        saveNewPost(postObect)
+        savePost(postObect)
         miniMode = true
         applicationElement.dispatchEvent(new CustomEvent("stateChanged"))
     }

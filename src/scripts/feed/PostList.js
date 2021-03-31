@@ -1,4 +1,4 @@
-import { getLikes, getPosts } from "../store/index.js"
+import { getLikes, getPosts } from "../data/provider.js"
 import { Post } from "./Post.js"
 
 export const PostList = () => {

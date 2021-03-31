@@ -1,114 +1,132 @@
 {
-    "users": [
-        {
-            "id": 1,
-            "name": "Ray Medrano",
-            "email": "ray@medrano.com",
-            "password": "ray"
-        },
-        {
-            "id": 2,
-            "name": "Meg Ducharme",
-            "email": "meg@ducharme.com",
-            "password": "meg"
-        },
-        {
-            "id": 3,
-            "name": "Mark Ellis",
-            "email": "mark@ellis.com",
-            "password": "mark"
-        },
-        {
-            "id": 4,
-            "name": "Daniella Agnoletti",
-            "email": "daniella@agnoletti.com",
-            "password": "daniella"
-        },
-        {
-            "id": 5,
-            "name": "Kimmy Bird",
-            "email": "kimmy@bird.com",
-            "password": "kimmy"
-        },
-        {
-            "id": 6,
-            "name": "Emily Lemmon",
-            "email": "emily@lemmon.com",
-            "password": "emily"
-        }
-    ],
-    "posts": [
-        {
-            "id": 1,
-            "userId": 1,
-            "title": "My first post",
-            "imageURL": "https://media.giphy.com/media/3oz8xyUoD2HlTIcdTW/giphy.gif",
-            "description": "Jianbing butcher post-ironic brunch marfa, listicle quinoa kickstarter vinyl poke cornhole snackwave yr flexitarian.",
-            "timestamp": 1608080619498
-        },
-        {
-            "id": 2,
-            "userId": 2,
-            "title": "Dinner",
-            "imageURL": "https://media.giphy.com/media/4RslNp4SUqAoM/giphy.gif",
-            "description": "Messenger bag hella gochujang adaptogen, aesthetic sartorial before they sold out franzen sustainable thundercats.",
-            "timestamp": 1608680619498
-        },
-        {
-            "id": 3,
-            "userId": 2,
-            "title": "Graduation!",
-            "imageURL": "https://media.giphy.com/media/lSPlEENLTonvclZP44/giphy.gif",
-            "description": "Pop-up biodiesel pickled crucifix. Tousled succulents banjo bicycle rights.",
-            "timestamp": 1608720619498
-        }
-    ],
-    "likes": [
-        {
-            "id": 1,
-            "userId": 1,
-            "postId": 2
-        },
-        {
-            "id": 2,
-            "userId": 3,
-            "postId": 2
-        },
-        {
-            "id": 3,
-            "userId": 2,
-            "postId": 1
-        }
-    ],
-    "messages": [
-        {
-            "userId": 2,
-            "recipient": 3,
-            "text": "mvkw kv kwvkowmkow m",
-            "id": 1
-        },
-        {
-            "userId": 2,
-            "recipient": 1,
-            "text": "v w lmpe2voewn j ",
-            "id": 2
-        }
-    ],
-    "follows": [
-        {
-            "id": 1,
-            "userId": 1,
-            "followingId": 2
-        },
-        {
-            "id": 2,
-            "userId": 3,
-            "followingId": 2
-        },
-        {
-            "id": 3,
-            "userId": 2,
-            "followingId": 1
-        }
-    ]
+  "users": [
+    {
+      "id": 1,
+      "name": "Ray Medrano",
+      "email": "ray@medrano.com",
+      "password": "ray"
+    },
+    {
+      "id": 2,
+      "name": "Meg Ducharme",
+      "email": "meg@ducharme.com",
+      "password": "meg"
+    },
+    {
+      "id": 3,
+      "name": "Mark Ellis",
+      "email": "mark@ellis.com",
+      "password": "mark"
+    },
+    {
+      "id": 4,
+      "name": "Daniella Agnoletti",
+      "email": "daniella@agnoletti.com",
+      "password": "daniella"
+    },
+    {
+      "id": 5,
+      "name": "Kimmy Bird",
+      "email": "kimmy@bird.com",
+      "password": "kimmy"
+    },
+    {
+      "id": 6,
+      "name": "Emily Lemmon",
+      "email": "emily@lemmon.com",
+      "password": "emily"
+    }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "userId": 1,
+      "title": "My first post",
+      "imageURL": "https://media.giphy.com/media/3oz8xyUoD2HlTIcdTW/giphy.gif",
+      "description": "Jianbing butcher post-ironic brunch marfa, listicle quinoa kickstarter vinyl poke cornhole snackwave yr flexitarian.",
+      "timestamp": 1608080619498
+    },
+    {
+      "id": 2,
+      "userId": 2,
+      "title": "Dinner",
+      "imageURL": "https://media.giphy.com/media/4RslNp4SUqAoM/giphy.gif",
+      "description": "Messenger bag hella gochujang adaptogen, aesthetic sartorial before they sold out franzen sustainable thundercats.",
+      "timestamp": 1608680619498
+    },
+    {
+      "id": 3,
+      "userId": 2,
+      "title": "Graduation!",
+      "imageURL": "https://media.giphy.com/media/lSPlEENLTonvclZP44/giphy.gif",
+      "description": "Pop-up biodiesel pickled crucifix. Tousled succulents banjo bicycle rights.",
+      "timestamp": 1608720619498
+    }
+  ],
+  "likes": [
+    {
+      "id": 1,
+      "userId": 1,
+      "postId": 2
+    },
+    {
+      "id": 2,
+      "userId": 3,
+      "postId": 2
+    },
+    {
+      "id": 3,
+      "userId": 2,
+      "postId": 1
+    }
+  ],
+  "messages": [
+    {
+      "userId": 2,
+      "recipientId": 3,
+      "text": "mvkw kv kwvkowmkow m",
+      "id": 1
+    },
+    {
+      "userId": 2,
+      "recipientId": 1,
+      "text": "v w lmpe2voewn j ",
+      "id": 2
+    },
+    {
+      "userId": 3,
+      "recipientId": 2,
+      "text": "v w lmpe2voewn j ",
+      "id": 3
+    },
+    {
+      "userId": 1,
+      "recipientId": 2,
+      "text": "v w lmpe2voewn j ",
+      "id": 4
+    },
+    {
+      "userId": 2,
+      "recipientId": 6,
+      "message": "Hello user 6. This is user 2.",
+      "id": 5
+    }
+  ],
+  "follows": [
+    {
+      "id": 1,
+      "userId": 1,
+      "followingId": 2
+    },
+    {
+      "id": 2,
+      "userId": 3,
+      "followingId": 2
+    },
+    {
+      "id": 3,
+      "userId": 2,
+      "followingId": 1
+    }
+  ]
 }
