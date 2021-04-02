@@ -6,12 +6,53 @@ const applicationState = {
     currentUser: {},
     feed: {
         chosenUser: null,
-        displayFavorites: false
+        displayFavorites: false,
+        displayMessages: false
     },
     users: [],
     posts: [],
     likes: [],
     messages: []
+}
+
+export const setMessageDisplay = () => {
+    applicationState.feed.displayMessages = true
+}
+
+export const getMessageDisplay = () => {
+    return applicationState.feed.displayMessages
+}
+
+export const clearFilters = () => {
+    applicationState.feed.chosenUser = null
+    applicationState.feed.displayFavorites = false
+    applicationState.feed.displayMessages = false
+}
+
+export const markAllMessagesRead = () => {
+    const fetches = []
+
+    getMessages().forEach(
+        message => {
+            fetches.push(
+                fetch(`${apiURL}/messages/${message.id}`, {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        userId: message.userId,
+                        recipientId: message.recipientId,
+                        text: message.text,
+                        read: true
+                    })
+                })
+            )
+        }
+    )
+
+    return Promise.all(fetches)
+        .then(() => fetchMessages())
 }
 
 export const fetchMessages = () => {
@@ -29,7 +70,13 @@ export const fetchMessages = () => {
 }
 
 export const getMessages = () => {
-    return [...applicationState.messages]
+    const userMessages = applicationState.messages.filter(
+        (message) => {
+            return message.recipientId === parseInt(localStorage.getItem("gg_user"))
+                    && !message.read
+        }
+    )
+    return userMessages
 }
 
 export const saveMessage = (message) => {
@@ -131,7 +178,7 @@ export const getShowFavorites = () => {
 }
 
 export const deletePost = (id) => {
-    return fetch(`${apiUrl}/posts/${id}`, {
+    return fetch(`${apiURL}/posts/${id}`, {
         method: "DELETE"
     })
         .then(() => {

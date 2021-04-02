@@ -30,3 +30,24 @@
     height: 1rem;
     line-height: 0;
 }
+
+.messages {
+    padding: 7rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.message {
+    border: 1px dotted lightblue;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0.25rem 0.25rem 0.5rem rgb(143, 143, 143);
+    margin: 0 25%;
+    flex-basis: 50%;
+}
+
+.message__author {
+    font-weight: bold;
+    margin-bottom: 1rem;
+}

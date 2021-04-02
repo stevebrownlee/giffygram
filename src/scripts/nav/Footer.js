@@ -4,7 +4,8 @@ const applicationElement = document.querySelector(".giffygram")
 
 applicationElement.addEventListener("change", changeEvent => {
     if (changeEvent.target.id === "userSelection") {
-        setChosenUser(parseInt(changeEvent.target.value))
+        const [,userId] = changeEvent.target.value.split("--")
+        setChosenUser(parseInt(userId))
         applicationElement.dispatchEvent(new CustomEvent("stateChanged"))
     }
 })
@@ -78,7 +79,7 @@ export const Footer = () => {
                     ${users.map(user => `
                         <option
                             ${getChosenUser() === user.id ? "selected" : ""}
-                            id="user--${user.id}">${user.id}</option>
+                            value="user--${user.id}">${user.name}</option>
                     `)}
                 </select>
             </div>

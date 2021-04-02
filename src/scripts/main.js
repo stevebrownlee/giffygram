@@ -1,6 +1,7 @@
 import { LoginForm } from "./auth/Login.js"
-import { fetchLikes, fetchMessages, fetchUsers, fetchPosts } from "./data/provider.js"
 import { GiffyGram } from "./GiffyGram.js"
+import { PrivateMessageList } from "./message/PrivateMessages.js"
+import { fetchLikes, fetchMessages, fetchUsers, fetchPosts, getMessageDisplay, markAllMessagesRead } from "./data/provider.js"
 
 const applicationElement = document.querySelector(".giffygram")
 
@@ -16,7 +17,7 @@ const synchronizeState = () => {
         .then(
             () => fetchPosts()
         )
-        .then( () => fetchLikes() )
+        .then(() => fetchLikes())
 }
 
 export const renderApp = () => {
@@ -26,7 +27,15 @@ export const renderApp = () => {
         console.log("User authenticated")
         synchronizeState().then(
             () => {
-                applicationElement.innerHTML = GiffyGram()
+                const displayMessages = getMessageDisplay()
+
+                if (displayMessages) {
+                    applicationElement.innerHTML = PrivateMessageList()
+                    markAllMessagesRead()
+                }
+                else {
+                    applicationElement.innerHTML = GiffyGram()
+                }
             }
         )
     } else {
