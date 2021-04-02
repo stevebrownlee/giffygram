@@ -15,6 +15,22 @@ const applicationState = {
     messages: []
 }
 
+export const favoritePost = (id) => {
+    return fetch(`${apiURL}/likes`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            userId: parseInt(localStorage.getItem("gg_user")),
+            postId: id
+        })
+    })
+        .then(() => {
+            applicationElement.dispatchEvent(new CustomEvent("stateChanged"))
+        })
+}
+
 export const setMessageDisplay = () => {
     applicationState.feed.displayMessages = true
 }
@@ -182,7 +198,7 @@ export const deletePost = (id) => {
         method: "DELETE"
     })
         .then(() => {
-            return fetchPosts()
+            applicationElement.dispatchEvent(new CustomEvent("stateChanged"))
         })
 }
 

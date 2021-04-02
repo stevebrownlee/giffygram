@@ -44,7 +44,7 @@
       "title": "My first post",
       "imageURL": "https://media.giphy.com/media/3oz8xyUoD2HlTIcdTW/giphy.gif",
       "description": "Jianbing butcher post-ironic brunch marfa, listicle quinoa kickstarter vinyl poke cornhole snackwave yr flexitarian.",
-      "timestamp": 1608080619498
+      "timestamp": 1508080619498
     },
     {
       "id": 2,
@@ -52,7 +52,7 @@
       "title": "Dinner",
       "imageURL": "https://media.giphy.com/media/4RslNp4SUqAoM/giphy.gif",
       "description": "Messenger bag hella gochujang adaptogen, aesthetic sartorial before they sold out franzen sustainable thundercats.",
-      "timestamp": 1608680619498
+      "timestamp": 1497580619498
     },
     {
       "id": 3,
@@ -60,7 +60,15 @@
       "title": "Graduation!",
       "imageURL": "https://media.giphy.com/media/lSPlEENLTonvclZP44/giphy.gif",
       "description": "Pop-up biodiesel pickled crucifix. Tousled succulents banjo bicycle rights.",
-      "timestamp": 1608720619498
+      "timestamp": 1528720619498
+    },
+    {
+      "title": "Learning JavaScript",
+      "imageURL": "https://media.giphy.com/media/S9dN7OWFj8GoRhTIuL/giphy-downsized.gif",
+      "description": "Ethical chillwave jianbing ramps plaid subway tile.",
+      "userId": 2,
+      "timestamp": 1617396786968,
+      "id": 4
     }
   ],
   "likes": [

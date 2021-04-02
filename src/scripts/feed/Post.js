@@ -1,10 +1,16 @@
-import { deletePost } from "../data/provider.js"
+import { deletePost, favoritePost } from "../data/provider.js"
 
 document.addEventListener("click", (e) => {
     if (e.target.id.startsWith("blockPost--")) {
-        const [prompt, id] = e.target.id.split("--")
-        deletePost(parseInt(id))
-        document.querySelector(".giffygram").dispatchEvent(new CustomEvent("stateChanged"))
+        const [, postId] = e.target.id.split("--")
+        deletePost(parseInt(postId))
+    }
+})
+
+document.addEventListener("click", (e) => {
+    if (e.target.id.startsWith("favoritePost--")) {
+        const [, postId] = e.target.id.split("--")
+        favoritePost(parseInt(postId))
     }
 })
 
@@ -21,7 +27,7 @@ export const Post = (postObject) => {
         <div class="post__tagline">
             Posted by
             <a href="#" class="profileLink" id="profile--${postObject.userId}">
-                User #${postObject.userId}
+                ${postObject.user.name}
             </a>
             on ${new Date(postObject.timestamp).toLocaleDateString('en-US')}
         </div>
@@ -36,7 +42,12 @@ export const Post = (postObject) => {
                 />
             </div>
             <div>
-                <img id="blockPost--${postObject.id}" class="actionIcon" src="/images/block.svg" />
+                ${
+                    postObject.userId === parseInt(localStorage.getItem("gg_user"))
+                        ? `<img id="blockPost--${postObject.id}" class="actionIcon" src="/images/block.svg" />`
+                        : ""
+                }
+
             </div>
         </div>
     </section>

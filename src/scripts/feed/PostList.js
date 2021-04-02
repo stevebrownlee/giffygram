@@ -1,4 +1,4 @@
-import { getLikes, getPosts } from "../data/provider.js"
+import { getLikes, getPosts, getUsers } from "../data/provider.js"
 import { Post } from "./Post.js"
 
 export const PostList = () => {
@@ -11,6 +11,7 @@ export const PostList = () => {
             like.userId === parseInt(localStorage.getItem("gg_user")) &&
             like.postId === post.id
         )
+        post.user = getUsers().find(u => u.id === post.userId)
         const htmlRepresentationOfThisPost = Post(post)
         htmlStringOfAllPosts += htmlRepresentationOfThisPost
     }
