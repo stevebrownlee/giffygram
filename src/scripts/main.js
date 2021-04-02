@@ -40,7 +40,11 @@ export const renderApp = () => {
         )
     } else {
         console.log("User not authenticated")
-        applicationElement.innerHTML = LoginForm()
+        fetchUsers().then(
+            () => {
+                applicationElement.innerHTML = LoginForm()
+            }
+        )
     }
 }
 
