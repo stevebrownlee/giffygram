@@ -1,4 +1,4 @@
-const apiURL = "http://giffygram.nss.team"
+const apiURL = "http://giffyapi.nss.team"
 const applicationElement = document.querySelector(".giffygram")
 
 
