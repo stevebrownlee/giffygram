@@ -1,10 +1,12 @@
 import { deletePost } from "../store/index.js"
 
+const giffygram = document.querySelector(".giffygram")
+
 document.addEventListener("click", (e) => {
     if (e.target.id.startsWith("blockPost--")) {
-        const [prompt, id] = e.target.id.split("--")
+        const [, id] = e.target.id.split("--")
         deletePost(parseInt(id))
-        document.querySelector(".giffygram").dispatchEvent(new CustomEvent("stateChanged"))
+        giffygram.dispatchEvent(new CustomEvent("stateChanged"))
     }
 })
 
