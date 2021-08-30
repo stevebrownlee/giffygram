@@ -1,4 +1,5 @@
-import { getUsers, saveMessage } from "../data/provider.js"
+import { saveMessage } from "../data/messageProvider.js"
+import { getUsers } from "../data/userProvider.js"
 
 let miniMode = true
 const applicationElement = document.querySelector(".giffygram")
@@ -18,18 +19,31 @@ document.addEventListener("click", clickEvent => {
 })
 
 document.addEventListener("click", clickEvent => {
+    if (clickEvent.target.id === "directMessage__cancel") {
+        const recipient = document.querySelector("select[name='directMessage__userSelect']")
+        const message = document.querySelector("input[name='message']")
+
+        recipient.value = 0
+        message.value = ""
+    }
+})
+
+document.addEventListener("click", clickEvent => {
     if (clickEvent.target.id === "directMessage__submit") {
-        const recipient = document.querySelector("select[name='directMessage__userSelect']").value
-        const message = document.querySelector("input[name='message']").value
-        const [, recipientId] = recipient.split("--")
+        const recipient = document.querySelector("select[name='directMessage__userSelect']")
+        const message = document.querySelector("input[name='message']")
+        const [, recipientId] = recipient.value.split("--")
 
         const messageObject = {
             userId: parseInt(localStorage.getItem("gg_user")),
             recipientId: parseInt(recipientId),
-            message: message
+            message: message.value
         }
 
-        saveMessage(messageObject)
+        saveMessage(messageObject).then(() => {
+            recipient.value = 0
+            message.value = ""
+        })
     }
 })
 
@@ -45,9 +59,9 @@ export const MessageForm = () => {
                 <h3>Direct Message</h3>
                 <div>Recipient:
                     <select name="directMessage__userSelect" class="message__input">
-                        <option>Choose a recipient...</option>
+                        <option value="0">Choose a recipient...</option>
                         ${
-                            users.map(u => `<option value="messageRecipient--${u.id}">${u.id}</option>`)
+                            users.map(u => `<option value="messageRecipient--${u.id}">${u.name}</option>`)
                         }
                     </select>
                 </div>
@@ -60,7 +74,7 @@ export const MessageForm = () => {
                 </div>
 
                 <button id="directMessage__submit">Save</button>
-                <button id="directMessage__cancel">Cancel</button>
+                <button id="directMessage__cancel">Clear</button>
 
                 <button id="directMessage__close">x</button>
 

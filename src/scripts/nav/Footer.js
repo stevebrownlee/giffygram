@@ -1,4 +1,6 @@
-import { getChosenUser, getPosts, getShowFavorites, getUsers, setChosenUser, toggleFavoritesOnly } from "../data/provider.js"
+import { getPosts } from "../data/postProvider.js"
+import { getShowFavorites, toggleFavoritesOnly, setChosenUser, getChosenUser } from "../data/provider.js"
+import { getUsers } from "../data/userProvider.js"
 
 const applicationElement = document.querySelector(".giffygram")
 
@@ -76,11 +78,13 @@ export const Footer = () => {
             </div>
             <div class="footer__item">
                 Posts by user <select id="userSelection">
-                    ${users.map(user => `
-                        <option
-                            ${getChosenUser() === user.id ? "selected" : ""}
+                    ${users.map(user => {
+                        const chosenUser = getChosenUser()
+                        return `<option
+                            ${chosenUser.id === user.id ? "selected" : ""}
                             value="user--${user.id}">${user.name}</option>
-                    `)}
+                        `
+                    })}
                 </select>
             </div>
             <div class="footer__item">

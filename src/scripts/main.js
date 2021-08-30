@@ -1,7 +1,10 @@
 import { LoginForm } from "./auth/Login.js"
+import { fetchMessages } from "./data/messageProvider.js"
+import { fetchLikes, fetchPosts } from "./data/postProvider.js"
+import { getMessageDisplay } from "./data/provider.js"
+import { fetchUsers, getUsers, setCurrentUser } from "./data/userProvider.js"
 import { GiffyGram } from "./GiffyGram.js"
 import { PrivateMessageList } from "./message/PrivateMessages.js"
-import { fetchLikes, fetchMessages, fetchUsers, fetchPosts, getMessageDisplay, markAllMessagesRead } from "./data/provider.js"
 
 const applicationElement = document.querySelector(".giffygram")
 
@@ -9,15 +12,9 @@ applicationElement.addEventListener("stateChanged", () => renderApp())
 
 const synchronizeState = () => {
     return fetchUsers()
-        .then(
-            () => {
-                return fetchMessages()
-            }
-        )
-        .then(
-            () => fetchPosts()
-        )
-        .then(() => fetchLikes())
+        .then( () => fetchMessages() )
+        .then( () => fetchPosts() )
+        .then( () => fetchLikes() )
 }
 
 export const renderApp = () => {
@@ -25,8 +22,13 @@ export const renderApp = () => {
 
     if (user) {
         console.log("User authenticated")
+
+
         synchronizeState().then(
             () => {
+                const userobject = getUsers().find(u => u.id === parseInt(user))
+                setCurrentUser(userobject)
+
                 const displayMessages = getMessageDisplay()
 
                 if (displayMessages) {

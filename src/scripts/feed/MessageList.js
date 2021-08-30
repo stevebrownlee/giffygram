@@ -1,4 +1,5 @@
-import { getMessages, getUsers } from "../data/provider.js"
+import { getMessages } from "../data/messageProvider.js"
+import { getUsers } from "../data/userProvider.js"
 
 export const MessageList = () => {
     const messages = getMessages()

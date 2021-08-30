@@ -1,4 +1,4 @@
-import { deletePost, favoritePost } from "../data/provider.js"
+import { deletePost, favoritePost } from "../data/postProvider.js"
 
 document.addEventListener("click", (e) => {
     if (e.target.id.startsWith("blockPost--")) {

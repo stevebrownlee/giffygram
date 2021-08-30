@@ -1,4 +1,5 @@
-import { savePost } from "../data/provider.js"
+import { savePost } from "../data/postProvider.js"
+import { getCurrentUser } from "../data/userProvider.js"
 
 let miniMode = true
 const applicationElement = document.querySelector(".giffygram")
@@ -28,7 +29,7 @@ document.addEventListener("click", clickEvent => {
             title: title,
             imageURL: url,
             description: description,
-            userId: parseInt(localStorage.getItem("gg_user")),
+            userId: getCurrentUser().id,
             timestamp: Date.now()
         }
 

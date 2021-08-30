@@ -1,28 +1,28 @@
-import { clearFilters, getMessages, setMessageDisplay } from "../data/provider.js"
+import { getMessages } from "../data/messageProvider.js"
+import { clearFilters, setMessageDisplay } from "../data/provider.js"
+import { logout, getCurrentUser } from "../data/userProvider.js"
 
 document.addEventListener("click", e => {
     if (e.target.id === "logout") {
-        localStorage.removeItem("gg_user")
-        document.querySelector(".giffygram").dispatchEvent(new CustomEvent("stateChanged"))
+        logout()
     }
 })
 
 document.addEventListener("click", e => {
     if (e.target.classList.contains("notification__count")) {
         setMessageDisplay(true)
-        document.querySelector(".giffygram").dispatchEvent(new CustomEvent("stateChanged"))
     }
 })
 
 document.addEventListener("click", e => {
     if (e.target.id === "logo") {
         clearFilters()
-        document.querySelector(".giffygram").dispatchEvent(new CustomEvent("stateChanged"))
     }
 })
 
 export const NavBar = () => {
     const messages = getMessages()
+    const user = getCurrentUser()
 
     return `
         <nav class="navigation">
@@ -42,7 +42,7 @@ export const NavBar = () => {
                 </div>
             </div>
             <div class="navigation__item navigation__logout">
-                <button id="logout" class="fakeLink">Logout</button>
+                <button id="logout" class="fakeLink">Logout ${user.name}</button>
             </div>
         </nav>
         `
