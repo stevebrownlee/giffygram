@@ -37,7 +37,8 @@ document.addEventListener("click", clickEvent => {
         const messageObject = {
             userId: parseInt(localStorage.getItem("gg_user")),
             recipientId: parseInt(recipientId),
-            message: message.value
+            text: message.value,
+            read: false
         }
 
         saveMessage(messageObject).then(() => {

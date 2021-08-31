@@ -93,21 +93,21 @@
       "userId": 2,
       "recipientId": 3,
       "text": "Selvage la croix prism truffaut cray offal lumbersexual bespoke skateboard. Next level chia enamel pin, wayfarers copper mug jean shorts leggings.",
-      "read": true,
+      "read": false,
       "id": 1
     },
     {
       "userId": 2,
       "recipientId": 3,
       "text": "Occupy pour-over chambray pitchfork woke vinyl. Drinking vinegar humblebrag banh mi lo-fi fanny pack hella cred 3 wolf moon air plant bitters meggings man braid migas narwhal. Tacos chia neutra, tumeric semiotics raw denim cardigan single-origin coffee health goth mlkshk coloring book vinyl schlitz.",
-      "read": true,
+      "read": false,
       "id": 2
     },
     {
       "userId": 3,
       "recipientId": 3,
       "text": "Poke church-key single-origin coffee art party stumptown hoodie, vice offal. Chambray intelligentsia DIY portland kogi. Meh hexagon pug everyday carry brooklyn poutine knausgaard ugh.",
-      "read": true,
+      "read": false,
       "id": 3
     },
     {
@@ -119,33 +119,17 @@
     },
     {
       "userId": 3,
-      "recipientId": 5,
-      "message": "Test",
-      "id": 6
+      "recipientId": 3,
+      "text": "rftwgf",
+      "read": false,
+      "id": 5
     },
     {
       "userId": 3,
       "recipientId": 3,
-      "read": true,
-      "id": 7
-    },
-    {
-      "userId": 3,
-      "recipientId": 1,
-      "message": "tvwfsc",
-      "id": 8
-    },
-    {
-      "userId": 3,
-      "recipientId": 2,
-      "message": "bhtegrvfecd",
-      "id": 9
-    },
-    {
-      "userId": 3,
-      "recipientId": 2,
-      "message": "bgrvwfed",
-      "id": 10
+      "text": "qwqwqwqwq",
+      "read": false,
+      "id": 6
     }
   ],
   "follows": [

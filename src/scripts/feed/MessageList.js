@@ -1,4 +1,4 @@
-import { getMessages } from "../data/messageProvider.js"
+import { getMessages, markAllMessagesRead } from "../data/messageProvider.js"
 import { getUsers } from "../data/userProvider.js"
 
 export const MessageList = () => {
@@ -15,6 +15,8 @@ export const MessageList = () => {
             }).join("")
         }
     </div>`
+
+    markAllMessagesRead()
 
     return html
 }

@@ -15,7 +15,7 @@ document.addEventListener("click", e => {
 })
 
 document.addEventListener("click", e => {
-    if (e.target.id === "logo") {
+    if (e.target.id === "logo" || e.target.parentNode.classList.contains("navigation__name")) {
         clearFilters()
     }
 })

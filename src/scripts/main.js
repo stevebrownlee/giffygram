@@ -1,5 +1,5 @@
 import { LoginForm } from "./auth/Login.js"
-import { fetchMessages } from "./data/messageProvider.js"
+import { fetchMessages, markAllMessagesRead } from "./data/messageProvider.js"
 import { fetchLikes, fetchPosts } from "./data/postProvider.js"
 import { getMessageDisplay } from "./data/provider.js"
 import { fetchUsers, getUsers, setCurrentUser } from "./data/userProvider.js"
@@ -8,32 +8,14 @@ import { PrivateMessageList } from "./message/PrivateMessages.js"
 
 const applicationElement = document.querySelector(".giffygram")
 
-applicationElement.addEventListener("stateChanged", () => renderApp())
-
-const synchronizeState = () => {
-    return fetchUsers()
-        .then( () => fetchMessages() )
-        .then( () => fetchPosts() )
-        .then( () => fetchLikes() )
-}
-
 export const renderApp = () => {
-    const user = parseInt(localStorage.getItem("gg_user"))
-
-    if (user) {
-        console.log("User authenticated")
-
-
+    if (determineAuth()) {
         synchronizeState().then(
             () => {
-                const userobject = getUsers().find(u => u.id === parseInt(user))
-                setCurrentUser(userobject)
+                const displayMessagesChosen = getMessageDisplay()
 
-                const displayMessages = getMessageDisplay()
-
-                if (displayMessages) {
+                if (displayMessagesChosen) {
                     applicationElement.innerHTML = PrivateMessageList()
-                    markAllMessagesRead()
                 }
                 else {
                     applicationElement.innerHTML = GiffyGram()
@@ -41,7 +23,6 @@ export const renderApp = () => {
             }
         )
     } else {
-        console.log("User not authenticated")
         fetchUsers().then(
             () => {
                 applicationElement.innerHTML = LoginForm()
@@ -49,5 +30,28 @@ export const renderApp = () => {
         )
     }
 }
+
+const synchronizeState = () => {
+    return fetchUsers()
+    .then( () => fetchMessages() )
+    .then( () => fetchPosts() )
+    .then( () => fetchLikes() )
+}
+
+const determineAuth = () => {
+    const user = localStorage.getItem("gg_user")
+
+    if (user) {
+        const unencodedUser = atob(user)
+        const parsedUser = JSON.parse(unencodedUser)
+        setCurrentUser(parsedUser)
+        return true
+    }
+
+    return false
+}
+
+applicationElement.addEventListener("stateChanged", () => renderApp())
+
 
 renderApp()

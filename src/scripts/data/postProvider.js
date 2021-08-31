@@ -26,6 +26,15 @@ export const favoritePost = (id) => {
         })
 }
 
+export const unfavoritePost = (id) => {
+    return fetch(`${apiURL}/likes/${id}`, {
+        method: "DELETE"
+    })
+        .then(() => {
+            applicationElement.dispatchEvent(new CustomEvent("stateChanged"))
+        })
+}
+
 export const fetchPosts = () => {
     return fetch(`${apiURL}/posts`)
         .then(response => response.json())

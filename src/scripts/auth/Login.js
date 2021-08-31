@@ -15,7 +15,8 @@ document.addEventListener("click", clickEvent => {
         }
 
         if (foundUser !== null) {
-            localStorage.setItem("gg_user", foundUser.id)
+            const encodedUser = btoa(JSON.stringify(foundUser))
+            localStorage.setItem("gg_user", encodedUser)
             document.querySelector(".giffygram").dispatchEvent(new CustomEvent("stateChanged"))
             setCurrentUser(foundUser)
         }

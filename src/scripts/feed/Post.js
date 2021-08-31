@@ -1,4 +1,5 @@
-import { deletePost, favoritePost } from "../data/postProvider.js"
+import { deletePost, favoritePost, unfavoritePost } from "../data/postProvider.js"
+import { getCurrentUser } from "../data/userProvider.js"
 
 document.addEventListener("click", (e) => {
     if (e.target.id.startsWith("blockPost--")) {
@@ -9,8 +10,13 @@ document.addEventListener("click", (e) => {
 
 document.addEventListener("click", (e) => {
     if (e.target.id.startsWith("favoritePost--")) {
-        const [, postId] = e.target.id.split("--")
-        favoritePost(parseInt(postId))
+        const [, postId, favoriteId] = e.target.id.split("--")
+        if (parseInt(favoriteId)) {
+            unfavoritePost(parseInt(favoriteId))
+        }
+        else {
+            favoritePost(parseInt(postId))
+        }
     }
 })
 
@@ -33,9 +39,9 @@ export const Post = (postObject) => {
         </div>
         <div class="post__actions">
             <div>
-                <img id="favoritePost--${postObject.id}"
+                <img id="favoritePost--${postObject.id}--${postObject.favoriteId}"
                     class="actionIcon"
-                    src="${!postObject.favorite
+                    src="${postObject.favoriteId === 0
                             ? "/images/favorite-star-blank.svg"
                             : "/images/favorite-star-yellow.svg"
                         }"
@@ -43,7 +49,7 @@ export const Post = (postObject) => {
             </div>
             <div>
                 ${
-                    postObject.userId === parseInt(localStorage.getItem("gg_user"))
+                    postObject.userId === getCurrentUser().id
                         ? `<img id="blockPost--${postObject.id}" class="actionIcon" src="/images/block.svg" />`
                         : ""
                 }
