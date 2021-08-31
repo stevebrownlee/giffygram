@@ -7,7 +7,7 @@ const choices = {
 }
 
 export const clearFilters = () => {
-    choices.chosenUser = null
+    choices.chosenUser = { id: 0 }
     choices.displayFavorites = false
     choices.displayMessages = false
     applicationElement.dispatchEvent(new CustomEvent("stateChanged"))
@@ -15,7 +15,7 @@ export const clearFilters = () => {
 
 export const toggleFavoritesOnly = (choice) => {
     if (choice) {
-        choices.chosenUser = null
+        choices.chosenUser = { id: 0 }
     }
     choices.displayFavorites = choice
     applicationElement.dispatchEvent(new CustomEvent("stateChanged"))
@@ -30,7 +30,7 @@ export const getChosenUser = () => {
 }
 
 export const setChosenUser = userId => {
-    choices.chosenUser = userId
+    choices.chosenUser = { id: userId }
     choices.displayFavorites = false
     applicationElement.dispatchEvent(new CustomEvent("stateChanged"))
 }

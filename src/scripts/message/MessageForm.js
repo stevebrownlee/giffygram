@@ -1,5 +1,5 @@
 import { saveMessage } from "../data/messageProvider.js"
-import { getUsers } from "../data/userProvider.js"
+import { getCurrentUser, getUsers } from "../data/userProvider.js"
 
 let miniMode = true
 const applicationElement = document.querySelector(".giffygram")
@@ -35,7 +35,7 @@ document.addEventListener("click", clickEvent => {
         const [, recipientId] = recipient.value.split("--")
 
         const messageObject = {
-            userId: parseInt(localStorage.getItem("gg_user")),
+            userId: getCurrentUser().id,
             recipientId: parseInt(recipientId),
             text: message.value,
             read: false

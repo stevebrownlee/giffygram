@@ -38,10 +38,7 @@ export const fetchMessages = () => {
         .then(response => response.json())
         .then(
             (data) => {
-                if (applicationState.messages.length !== data.length) {
-                    applicationState.messages = data
-                    applicationElement.dispatchEvent(new CustomEvent("stateChanged"))
-                }
+                applicationState.messages = data
             }
         )
 }
