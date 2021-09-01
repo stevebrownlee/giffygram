@@ -1,5 +1,8 @@
+import { getShowFavorites,
+         toggleFavoritesOnly,
+         setChosenUser,
+         getChosenUser } from "../data/provider.js"
 import { getPosts } from "../data/postProvider.js"
-import { getShowFavorites, toggleFavoritesOnly, setChosenUser, getChosenUser } from "../data/provider.js"
 import { getUsers } from "../data/userProvider.js"
 
 const applicationElement = document.querySelector(".giffygram")
@@ -64,20 +67,26 @@ export const Footer = () => {
     */
     postCount = postsSince(2020)
 
+    const years = []
+    let thisYear = new Date().getFullYear()
+    for (let i = 0; i < 5; i++) {
+        years.push(thisYear)
+        thisYear--
+    }
 
     return `
         <footer class="footer">
             <div class="footer__item">
                 Posts since <select id="yearSelection">
-                    <option>2020</option>
-                    <option>2019</option>
-                    <option>2018</option>
-                    <option>2017</option>
+                    ${
+                        years.map(y => `<option>${y}</option>`).join("")
+                    }
                 </select>
                 <span id="postCount">${postCount}</span>
             </div>
             <div class="footer__item">
                 Posts by user <select id="userSelection">
+                    <option value="user--0">Choose...</option>
                     ${users.map(user => {
                         const chosenUser = getChosenUser()
                         return `<option

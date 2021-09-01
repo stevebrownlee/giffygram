@@ -34,6 +34,7 @@ export const getPosts = () => {
     // If a user was chosen in the footer, filter to that user's posts
     else if (chosenUser.id !== 0) {
         posts = userPosts(posts)
+        console.log(posts)
     }
 
     return posts
@@ -112,7 +113,7 @@ const userPosts = (posts) => {
     const userPosts = []
 
     for (const post of posts) {
-        if (post.userId === chosenUser) {
+        if (post.userId === chosenUser.id) {
             userPosts.push(post)
         }
     }
