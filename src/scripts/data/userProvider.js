@@ -1,4 +1,5 @@
-const apiURL = "http://localhost:3000"
+import { Settings } from "./settings.js"
+
 const applicationElement = document.querySelector(".giffygram")
 
 const applicationState = {
@@ -20,7 +21,7 @@ export const getCurrentUser = () => {
 }
 
 export const fetchUsers = () => {
-    return fetch(`${apiURL}/users`)
+    return fetch(`${Settings.apiURL}/users`)
         .then(response => response.json())
         .then(
             (data) => {

@@ -1,7 +1,5 @@
+import { Settings } from "./settings.js"
 import { getCurrentUser } from "./userProvider.js"
-
-const apiURL = "http://localhost:3000"
-const applicationElement = document.querySelector(".giffygram")
 
 const applicationState = {
     messages: []
@@ -13,7 +11,7 @@ export const markAllMessagesRead = () => {
     getMessages().forEach(
         message => {
             fetches.push(
-                fetch(`${apiURL}/messages/${message.id}`, {
+                fetch(`${Settings.apiURL}/messages/${message.id}`, {
                     method: "PUT",
                     headers: {
                         "Content-Type": "application/json"
@@ -34,7 +32,7 @@ export const markAllMessagesRead = () => {
 }
 
 export const fetchMessages = () => {
-    return fetch(`${apiURL}/messages`)
+    return fetch(`${Settings.apiURL}/messages`)
         .then(response => response.json())
         .then(
             (data) => {
@@ -56,7 +54,7 @@ export const getMessages = () => {
 }
 
 export const saveMessage = (message) => {
-    return fetch(`${apiURL}/messages`, {
+    return fetch(`${Settings.apiURL}/messages`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"

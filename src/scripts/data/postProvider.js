@@ -1,9 +1,8 @@
 import { getChosenUser, getShowFavorites } from "./provider.js"
+import { Settings } from "./settings.js"
 import { getCurrentUser } from "./userProvider.js"
 
-const apiURL = "http://localhost:3000"
 const applicationElement = document.querySelector(".giffygram")
-
 
 const applicationState = {
     posts: [],
@@ -11,7 +10,7 @@ const applicationState = {
 }
 
 export const fetchPosts = () => {
-    return fetch(`${apiURL}/posts`)
+    return fetch(`${Settings.apiURL}/posts`)
         .then(response => response.json())
         .then(
             (data) => {
@@ -41,7 +40,7 @@ export const getPosts = () => {
 }
 
 export const favoritePost = (id) => {
-    return fetch(`${apiURL}/likes`, {
+    return fetch(`${Settings.apiURL}/likes`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -57,14 +56,14 @@ export const favoritePost = (id) => {
 }
 
 export const unfavoritePost = (id) => {
-    return fetch(`${apiURL}/likes/${id}`, { method: "DELETE" })
+    return fetch(`${Settings.apiURL}/likes/${id}`, { method: "DELETE" })
         .then(() => {
             applicationElement.dispatchEvent(new CustomEvent("stateChanged"))
         })
 }
 
 export const savePost = (post) => {
-    return fetch(`${apiURL}/posts`, {
+    return fetch(`${Settings.apiURL}/posts`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -76,14 +75,14 @@ export const savePost = (post) => {
 }
 
 export const deletePost = (id) => {
-    return fetch(`${apiURL}/posts/${id}`, { method: "DELETE" })
+    return fetch(`${Settings.apiURL}/posts/${id}`, { method: "DELETE" })
         .then(() => {
             applicationElement.dispatchEvent(new CustomEvent("stateChanged"))
         })
 }
 
 export const fetchLikes = () => {
-    return fetch(`${apiURL}/likes`)
+    return fetch(`${Settings.apiURL}/likes`)
         .then(response => response.json())
         .then(
             (data) => {
