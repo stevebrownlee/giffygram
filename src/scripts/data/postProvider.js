@@ -10,7 +10,7 @@ const applicationState = {
 }
 
 export const fetchPosts = () => {
-    return fetch(`${Settings.apiURL}/posts`)
+    return fetch(`${Settings.apiURL}/posts?_page=1`)
         .then(response => response.json())
         .then(
             (data) => {
@@ -34,14 +34,13 @@ export const getPosts = () => {
     // If a user was chosen in the footer, filter to that user's posts
     else if (chosenUser.id !== 0) {
         posts = userPosts(posts)
-        console.log(posts)
     }
 
     return posts
 }
 
 export const favoritePost = (id) => {
-    return fetch(`${Settings.apiURL}/likes`, {
+    return fetch(`${Settings.apiURL}/likes/userId=${getCurrentUser().id}&_page=1`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -105,7 +104,7 @@ const filterFavorites = (posts) => {
         favePost.post = posts.find(p => p.id === favePost.postId)
     }
 
-    return favePosts.map(fp => fp.post)
+    return favePosts.map(fp => ({...fp.post}))
 }
 
 const userPosts = (posts) => {
